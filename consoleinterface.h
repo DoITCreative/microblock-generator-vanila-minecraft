@@ -20,7 +20,6 @@ class Consoleinterface
 		void DrawGrid();
 		void DrawCursor();
 		void Controls();
-		void ClearScreen();
 		void Redraw();
 		void PrevOut();
 };

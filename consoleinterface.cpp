@@ -1,7 +1,7 @@
 #include "consoleinterface.h"
 #include <iostream>
 #include <string>
-#include <curses.h>
+#include <ncurses.h>
 
 Consoleinterface::Consoleinterface()
 {
@@ -10,35 +10,35 @@ Consoleinterface::Consoleinterface()
 	intSizeY=20;
 	selectedBlockName = "";
 	selectedLayer = 1;
+	initscr();
+	raw();
+	noecho();
+	keypad(stdscr, TRUE);
+
 	while (!finished) 
 	{
 		Redraw();
 		Controls();
 	}
+
+	endwin();
 }
 
 
 void Consoleinterface::Redraw()
 {
-	ClearScreen();
+	clear();
 	DrawTitle();
 	DrawGrid();
 	DrawCursor();
 	PrevOut();
 }
-void Consoleinterface::ClearScreen()
-{
-	for (int i=0; i<=50; i++)
-	{
-		std::cout<<std::endl;
-	}
-}
 
 void Consoleinterface::DrawTitle()
 {
-	std::cout << "##############################################" << std::endl;
-	std::cout << "# Selected block: " <<selectedBlockName<<"         Selected layer: "
-		<< selectedLayer<<" #"<<std::endl;
+	printw("##############################################\n");
+	printw("# Selected block: %s         Selected layer: %i #\n",selectedBlockName,selectedLayer);
+	refresh();
 }
 
 void Consoleinterface::DrawGrid()
@@ -49,29 +49,31 @@ void Consoleinterface::DrawGrid()
 		{
 			if (x==curPosX&&y==curPosY)
 			{
-				std::cout<<"X";
+				printw("X");
 			}
 			else if (x==1||x==intSizeX||y==1||y==intSizeY) 
 			{
-				std::cout<<"#";
+				printw("#");
 			} 
 			else if (x>3&&x<25&&y>4&&y<17) 
 			{
-				std::cout<<".";
+				printw(".");
 			}
 			else 
 			{
-				std::cout<<" ";
+				printw(" ");
 			}
 		}
-		std::cout<<std::endl;
+		printw("\n");
 	}
+	refresh();
 }
 void Consoleinterface::PrevOut()
 {
 	if (pOut != "")
 	{
-		std::cout<<"Prev out: "<<pOut<<std::endl;
+		printw("Prev out: %s\n",pOut);
+		refresh();
 	}
 }
 
@@ -83,8 +85,9 @@ void Consoleinterface::Controls()
 {
 	char command;
 
-	std::cout<<"Enter command, h - help, q - quit: ";
-	std::cin>>command;
+	printw("Enter command, h - help, q - quit: ");
+	refresh();
+	command=getch();
 	switch (command) 
 	{
 	case 'h':
