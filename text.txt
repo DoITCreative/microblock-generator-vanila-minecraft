@@ -1,0 +1,5 @@
+Hello, this is
+some strings in the file
+for testing stuff!
+This \n is nice file to test stuff!
+
