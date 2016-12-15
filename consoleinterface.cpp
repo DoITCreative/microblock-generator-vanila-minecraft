@@ -82,14 +82,6 @@ void Consoleinterface::DrawCursor()
 void Consoleinterface::Controls()
 {
 	char command;
-	std::cout<<"Testing curses begin"<<std::endl;
-	
-
-	std::cout<<key<<std::endl;
-
-	
-
-	std::cout<<"Testing curses end"<<std::endl;
 
 	std::cout<<"Enter command, h - help, q - quit: ";
 	std::cin>>command;
