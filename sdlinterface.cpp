@@ -1,4 +1,5 @@
 #include "sdlinterface.h"
+#include "block.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include <iostream>
@@ -19,6 +20,7 @@ Sdlinterface::Sdlinterface()
 	image = load_image("bottom_menu.png");
 	apply_surface(0,425,image, screen);
 	SDL_Flip(screen);
+
 	while (quit == false)
 	{
 		while (SDL_PollEvent(&event))
