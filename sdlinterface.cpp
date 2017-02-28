@@ -2,6 +2,7 @@
 #include "block.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include <vector>
 #include <iostream>
 #include <string>
 
@@ -19,6 +20,18 @@ Sdlinterface::Sdlinterface()
 	}
 	image = load_image("bottom_menu.png");
 	apply_surface(0,425,image, screen);
+	
+	std::vector<Block*> block_list = {};
+	block_list.push_back(new Block(1,1,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(1,2,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(1,3,0,"cobblestone","textures/cobblestone.png"));
+
+	for (Block* n: block_list)
+	{
+		image = load_image(n->getTexture());
+		apply_surface(n->getX()*25,n->getY()*25, image, screen);
+	}
+	
 	SDL_Flip(screen);
 
 	while (quit == false)

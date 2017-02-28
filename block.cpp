@@ -3,11 +3,12 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
-Block::Block(int coord_x, int coord_y, std::string type, std::string texture_file) 
+Block::Block(int coord_x, int coord_y, int damage, std::string id, std::string texture_file) 
 {
 	this->coord_x=coord_x;	
 	this->coord_y=coord_y;	
-	this->type=type;	
+	this->damage=damage;
+	this->id=id;	
 	this->texture_file=texture_file;	
 }
 
@@ -21,9 +22,14 @@ int Block::getY()
 	return this->coord_y;
 }
 
-std::string Block::getType()
+int Block::getDamage()
 {
-	return this->type;
+	return this->damage;
+}
+
+std::string Block::getId()
+{
+	return this->id;
 }
 
 std::string Block::getTexture()

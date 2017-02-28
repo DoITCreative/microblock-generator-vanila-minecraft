@@ -5,15 +5,18 @@
 class Block
 {
 	public:
-		Block(int coord_x, int coord_y, std::string type, std::string texture_file);
+		Block(int coord_x, int coord_y, int damage,
+			  std::string id, std::string texture_file);
 		int getX();
 		int getY();
-		std::string getType();
+		int getDamage();
+		std::string getId();
 		std::string getTexture();
 	private:
 		int coord_x;
 		int coord_y;
-		std::string type;
+		int damage;
+		std::string id;
 		std::string texture_file;
 };
 #endif
