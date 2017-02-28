@@ -114,7 +114,7 @@ void Consoleinterface::Controls()
 		curPosX++;
 		break;
 	default:
-		pOut="Deffault";
+		pOut="Default";
 	break;
 	}
 }

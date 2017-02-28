@@ -1,2 +1,2 @@
-default: main.cpp consoleinterface.h consoleinterface.cpp
-	g++ main.cpp consoleinterface.cpp -o output.out -I. -lncurses
+default: main.cpp sdlinterface.h sdlinterface.cpp
+	g++ main.cpp sdlinterface.cpp -o output.out -I. -lSDL -lSDL_image

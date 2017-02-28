@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "consoleinterface.h"
+#include "sdlinterface.h"
 
 using namespace std;
 
@@ -12,8 +12,7 @@ void writefile(string filename, string text);
 
 int main(int argc, char* argv[])
 {
-	
-	Consoleinterface *console = new Consoleinterface();
+	Sdlinterface *sdli = new Sdlinterface();
 	return 0;
 }
 
@@ -33,7 +32,7 @@ string readfile(string filename)
 		}
 		myfile.close();
 	} else {
-		cout << "File can not be readed!" << endl;
+		cout << "The file could not be read!" << endl;
 	}
 	return output;
 }
