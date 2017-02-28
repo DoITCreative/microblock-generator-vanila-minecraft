@@ -8,7 +8,7 @@ Sdlinterface::Sdlinterface()
 {
 	bool quit = false;
 	init();
-	load_files();
+	image = load_image("tile.png");
 	for (int y=0; y<17; y++) 
 	{
 		for (int x=0; x<25; x++)
@@ -16,6 +16,8 @@ Sdlinterface::Sdlinterface()
 			apply_surface(x*25,y*25,image, screen);
 		}
 	}
+	image = load_image("bottom_menu.png");
+	apply_surface(0,425,image, screen);
 	SDL_Flip(screen);
 	while (quit == false)
 	{
@@ -55,12 +57,7 @@ void Sdlinterface::init()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	screen = SDL_SetVideoMode(SCREEN_WIDTH,SCREEN_HEIGHT, SCREEN_BPP,SDL_SWSURFACE);
-	SDL_WM_SetCaption("Hello World",NULL);
-}
-
-void Sdlinterface::load_files() 
-{
-	image = load_image("tile.png");
+	SDL_WM_SetCaption("Microblock generator",NULL);
 }
 
 void Sdlinterface::clean_up()
