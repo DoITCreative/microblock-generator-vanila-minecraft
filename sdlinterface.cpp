@@ -35,7 +35,7 @@ Sdlinterface::Sdlinterface()
 	char const *text_charred = s.c_str();
 
 	message = TTF_RenderText_Solid(font,text_charred, textColor);
-	apply_surface (570,435,message,screen);
+	apply_surface (585,435,message,screen);
 	
 
 	std::vector<Block*> block_list = {};
@@ -60,6 +60,15 @@ Sdlinterface::Sdlinterface()
 		apply_surface(n->getX()*25,n->getY()*25, image, screen);
 	}
 	
+	
+	for (int i=0; i<16; i++) 
+	{
+		if (selector_pos==i) 
+		{
+			image = load_image("interface_pngs/selector.png");
+			apply_surface(10+i*35,434,image, screen);
+		}
+	}
 
 	SDL_Flip(screen);
 
