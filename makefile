@@ -1,2 +1,2 @@
-default: main.cpp sdlinterface.h sdlinterface.cpp block.h block.cpp
-	g++ main.cpp sdlinterface.cpp block.cpp -o microblockgen.out -I. -lSDL -lSDL_image -lSDL_ttf
+default: main.cpp headers/sdlinterface.h sdlinterface.cpp headers/block.h block.cpp
+	g++ main.cpp sdlinterface.cpp block.cpp -o microblockgen.out -Iheaders -lSDL -lSDL_image -lSDL_ttf

@@ -11,7 +11,7 @@ Sdlinterface::Sdlinterface()
 {
 	bool quit = false;
 	init();
-	image = load_image("tile.png");
+	image = load_image("interface_pngs/tile.png");
 	for (int y=0; y<17; y++) 
 	{
 		for (int x=0; x<25; x++)
@@ -19,16 +19,16 @@ Sdlinterface::Sdlinterface()
 			apply_surface(x*25,y*25,image, screen);
 		}
 	}
-	image = load_image("bottom_menu.png");
+	image = load_image("interface_pngs/bottom_menu.png");
 	apply_surface(0,425,image, screen);
 	
-	image = load_image("arrow_uu.png");
+	image = load_image("interface_pngs/arrow_uu.png");
 	apply_surface(600,436,image, screen);
 
-	image = load_image("arrow_du.png");
+	image = load_image("interface_pngs/arrow_du.png");
 	apply_surface(600,452,image, screen);
 
-	font = TTF_OpenFont("font.ttf",20);
+	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 
 	std::string s = std::to_string(layer);
