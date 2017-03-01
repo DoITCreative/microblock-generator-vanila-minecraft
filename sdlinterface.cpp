@@ -50,7 +50,7 @@ void Sdlinterface::render()
 		count++;
 	}
 
-	for (int i=1; i<16; i++) 
+	for (int i=0; i<16; i++) 
 	{
 		if (selector_pos==i) 
 		{
@@ -119,15 +119,71 @@ Sdlinterface::Sdlinterface()
 							}
 							counter++;
 						}
-
 						if (!isset)
 						{
+							Block* b;
+							switch (selector_pos)
+							{
+								case 0:
+									b = new Block(coord_click_x,coord_click_y,0,"brick","textures/brick.png");
+									break;
+								case 1:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/cobblestone.png");
+									break;
+								case 2:
+									b = new Block(coord_click_x,coord_click_y,0,"diamond_block","textures/diamond_block.png");
+									break;
+								case 3:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/dirt.png");
+									break;
+								case 4:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/glass.png");
+									break;
+								case 5:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/glowstone.png");
+									break;
+								case 6:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/gold_block.png");
+									break;
+								case 7:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/hay_block_side.png");
+									break;
+								case 8:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/ice.png");
+									break;
+								case 9:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/iron_block.png");
+									break;
+								case 10:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_acacia.png");
+									break;
+								case 11:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_big_oak.png");
+									break;
+								case 12:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_birch.png");
+									break;
+								case 13:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_jungle.png");
+									break;
+								case 14:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_spruce.png");
+									break;
+								case 15:
+									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/planks_oak.png");
+									break;
 
-							block_list.push_back(new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/cobblestone.png"));
+
+							}
+							block_list.push_back(b);
 						}
 						render();
 					}
-					//std::cout<<"Left click at X:"<<event.button.x<<" Y:"<<event.button.y<<"\n";
+					if (event.button.x<=625 && event.button.y>425)
+					{
+						selector_pos=(int)((event.button.x-10)/35);
+						render();
+					}
 				}
 
 				if (event.button.button == SDL_BUTTON_RIGHT)

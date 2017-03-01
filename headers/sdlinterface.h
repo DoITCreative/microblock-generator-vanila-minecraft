@@ -21,7 +21,7 @@ class Sdlinterface
 		SDL_Color textColor = {255,255,255};
 		SDL_Event event;
 		int layer = 0;
-		int selector_pos = 0;
+		int selector_pos = 1;
 		std::vector<Block*> block_list = {};
 		std::vector<std::string> slots = {};
 
