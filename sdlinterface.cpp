@@ -21,6 +21,12 @@ Sdlinterface::Sdlinterface()
 	image = load_image("bottom_menu.png");
 	apply_surface(0,425,image, screen);
 	
+	image = load_image("arrow_uu.png");
+	apply_surface(600,436,image, screen);
+
+	image = load_image("arrow_du.png");
+	apply_surface(600,452,image, screen);
+
 	std::vector<Block*> block_list = {};
 	block_list.push_back(new Block(3,2,0,"cobblestone","textures/cobblestone.png"));
 	block_list.push_back(new Block(4,2,0,"cobblestone","textures/cobblestone.png"));
@@ -43,6 +49,7 @@ Sdlinterface::Sdlinterface()
 		apply_surface(n->getX()*25,n->getY()*25, image, screen);
 	}
 	
+
 	SDL_Flip(screen);
 
 	while (quit == false)
@@ -65,7 +72,7 @@ SDL_Surface* Sdlinterface::load_image(std::string filename)
 	loadedImage = IMG_Load(filename.c_str());
 	if (loadedImage != NULL)
 	{
-		optimizedImage = SDL_DisplayFormat(loadedImage);
+		optimizedImage = SDL_DisplayFormatAlpha(loadedImage);
 		SDL_FreeSurface(loadedImage);
 	}
 	return optimizedImage;
