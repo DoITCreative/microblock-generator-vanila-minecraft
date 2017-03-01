@@ -7,6 +7,7 @@ class Block
 	public:
 		Block(int coord_x, int coord_y, int damage,
 			  std::string id, std::string texture_file);
+		~Block();
 		int getX();
 		int getY();
 		int getDamage();

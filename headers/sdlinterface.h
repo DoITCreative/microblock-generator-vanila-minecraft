@@ -1,4 +1,6 @@
 #include <string>
+#include <vector>
+#include "block.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_ttf.h"
 #ifndef SDLINTERFACE_H
@@ -19,13 +21,16 @@ class Sdlinterface
 		SDL_Color textColor = {255,255,255};
 		SDL_Event event;
 		int layer = 0;
-		int selector_pos = 1;
+		int selector_pos = 0;
+		std::vector<Block*> block_list = {};
+		std::vector<std::string> slots = {};
 
 	private:
 		SDL_Surface* load_image(std::string filename);
 		void apply_surface(int x, int y, SDL_Surface* source, SDL_Surface* destination);
 		void init();
 		void clean_up();
+		void render();
 
 };
 

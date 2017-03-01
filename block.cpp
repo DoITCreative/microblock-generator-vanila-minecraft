@@ -2,6 +2,7 @@
 #include <string>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include <iostream>
 
 Block::Block(int coord_x, int coord_y, int damage, std::string id, std::string texture_file) 
 {
@@ -10,6 +11,11 @@ Block::Block(int coord_x, int coord_y, int damage, std::string id, std::string t
 	this->damage=damage;
 	this->id=id;	
 	this->texture_file=texture_file;	
+}
+
+Block::~Block()
+{
+	//std::cout<<"Block destroyed!\n";	
 }
 
 int Block::getX()
