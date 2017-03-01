@@ -1,5 +1,6 @@
 #include <string>
 #include "SDL/SDL.h"
+#include "SDL/SDL_ttf.h"
 #ifndef SDLINTERFACE_H
 #define SDLINTERFACE_H
 class Sdlinterface 
@@ -13,7 +14,11 @@ class Sdlinterface
 		const int SCREEN_BPP = 32;	
 		SDL_Surface* image = NULL;
 		SDL_Surface* screen = NULL;
+		SDL_Surface* message = NULL;
+		TTF_Font* font = NULL;
+		SDL_Color textColor = {255,255,255};
 		SDL_Event event;
+		int layer = 0;
 
 	private:
 		SDL_Surface* load_image(std::string filename);

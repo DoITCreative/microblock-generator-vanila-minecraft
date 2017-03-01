@@ -2,6 +2,7 @@
 #include "block.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_ttf.h"
 #include <vector>
 #include <iostream>
 #include <string>
@@ -26,6 +27,16 @@ Sdlinterface::Sdlinterface()
 
 	image = load_image("arrow_du.png");
 	apply_surface(600,452,image, screen);
+
+	font = TTF_OpenFont("font.ttf",20);
+	textColor = {164,164,163};
+
+	std::string s = std::to_string(layer);
+	char const *text_charred = s.c_str();
+
+	message = TTF_RenderText_Solid(font,text_charred, textColor);
+	apply_surface (570,435,message,screen);
+	
 
 	std::vector<Block*> block_list = {};
 	block_list.push_back(new Block(3,2,0,"cobblestone","textures/cobblestone.png"));
@@ -90,12 +101,16 @@ void Sdlinterface::init()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	screen = SDL_SetVideoMode(SCREEN_WIDTH,SCREEN_HEIGHT, SCREEN_BPP,SDL_SWSURFACE);
+	TTF_Init();
 	SDL_WM_SetCaption("Microblock generator",NULL);
 }
 
 void Sdlinterface::clean_up()
 {
 	SDL_FreeSurface(image);
+	SDL_FreeSurface(message);
+	TTF_CloseFont(font);
+	TTF_Quit();
 	SDL_Quit();
 }
 
