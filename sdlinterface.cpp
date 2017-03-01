@@ -22,10 +22,21 @@ Sdlinterface::Sdlinterface()
 	apply_surface(0,425,image, screen);
 	
 	std::vector<Block*> block_list = {};
-	block_list.push_back(new Block(1,1,0,"cobblestone","textures/cobblestone.png"));
-	block_list.push_back(new Block(1,2,0,"cobblestone","textures/cobblestone.png"));
-	block_list.push_back(new Block(1,3,0,"cobblestone","textures/cobblestone.png"));
-
+	block_list.push_back(new Block(3,2,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(4,2,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(6,2,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(7,2,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(5,4,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(5,5,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(4,8,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(5,8,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(6,8,0,"cobblestone","textures/cobblestone.png"));
+	block_list.push_back(new Block(2,1,0,"dirt","textures/dirt.png"));
+	block_list.push_back(new Block(3,1,0,"dirt","textures/dirt.png"));
+	block_list.push_back(new Block(4,1,0,"dirt","textures/dirt.png"));
+	block_list.push_back(new Block(6,1,0,"dirt","textures/dirt.png"));
+	block_list.push_back(new Block(7,1,0,"dirt","textures/dirt.png"));
+	block_list.push_back(new Block(8,1,0,"dirt","textures/dirt.png"));
 	for (Block* n: block_list)
 	{
 		image = load_image(n->getTexture());

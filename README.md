@@ -15,4 +15,11 @@ Based on this in game command:
 
 ```
 
+## Depends on:
+- SDL
+
+## Installation process:
+- Clone repository
+- Run "make"
+- Enjoy ;)
 
