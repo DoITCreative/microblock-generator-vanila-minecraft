@@ -60,8 +60,33 @@ Sdlinterface::Sdlinterface()
 		apply_surface(n->getX()*25,n->getY()*25, image, screen);
 	}
 	
+	std::vector<std::string> slots = {};
+	slots.push_back("textures/brick.png");
+	slots.push_back("textures/cobblestone.png");
+	slots.push_back("textures/diamond_block.png");
+	slots.push_back("textures/dirt.png");
+	slots.push_back("textures/glass.png");
+	slots.push_back("textures/glowstone.png");
+	slots.push_back("textures/gold_block.png");
+	slots.push_back("textures/hay_block_side.png");
+	slots.push_back("textures/ice.png");
+	slots.push_back("textures/iron_block.png");
+	slots.push_back("textures/log_acacia.png");
+	slots.push_back("textures/log_big_oak.png");
+	slots.push_back("textures/log_birch.png");
+	slots.push_back("textures/log_jungle.png");
+	slots.push_back("textures/log_spruce.png");
+	slots.push_back("textures/planks_oak.png");
 	
-	for (int i=0; i<16; i++) 
+	int count=0;
+	for (std::string i:slots)
+	{
+		image = load_image(i);
+		apply_surface(13+count*35,437,image, screen);
+		count++;
+	}
+
+	for (int i=1; i<16; i++) 
 	{
 		if (selector_pos==i) 
 		{
