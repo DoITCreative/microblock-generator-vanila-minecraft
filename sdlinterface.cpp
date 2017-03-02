@@ -4,6 +4,8 @@
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_ttf.h"
 #include <vector>
+#include <thread>
+#include <chrono>
 #include <iostream>
 #include <string>
 
@@ -20,11 +22,28 @@ void Sdlinterface::render()
 	image = load_image("interface_pngs/bottom_menu.png");
 	apply_surface(0,425,image, screen);
 	
-	image = load_image("interface_pngs/arrow_uu.png");
-	apply_surface(600,436,image, screen);
-
-	image = load_image("interface_pngs/arrow_du.png");
-	apply_surface(600,452,image, screen);
+	if (!arrow_up_pressed)
+	{
+		image = load_image("interface_pngs/arrow_uu.png");
+		apply_surface(600,436,image, screen);
+	}
+	else
+	{
+		image = load_image("interface_pngs/arrow_up.png");
+		apply_surface(600,436,image, screen);
+		arrow_up_pressed=false;
+	}
+	if (!arrow_down_pressed)
+	{
+		image = load_image("interface_pngs/arrow_du.png");
+		apply_surface(600,452,image, screen);
+	} 
+	else 
+	{
+		image = load_image("interface_pngs/arrow_dp.png");
+		apply_surface(600,452,image, screen);
+		arrow_down_pressed=false;
+	}
 
 	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
@@ -37,8 +56,11 @@ void Sdlinterface::render()
 	
 	for (Block* n: block_list)
 	{
-		image = load_image(n->getTexture());
-		apply_surface(n->getX()*25,n->getY()*25, image, screen);
+		if (n->getZ()==layer)
+		{
+			image = load_image(n->getTexture());
+			apply_surface(n->getX()*25,n->getY()*25, image, screen);
+		}
 	}
 	
 
@@ -110,7 +132,7 @@ Sdlinterface::Sdlinterface()
 						int counter=0;
 						for (Block* b:block_list)
 						{
-							if (b->getX()==coord_click_x && b->getY()==coord_click_y)
+							if (b->getX()==coord_click_x && b->getY()==coord_click_y && b->getZ()==layer)
 							{
 								block_list.erase(block_list.begin()+counter);
 								counter=-1;
@@ -125,52 +147,52 @@ Sdlinterface::Sdlinterface()
 							switch (selector_pos)
 							{
 								case 0:
-									b = new Block(coord_click_x,coord_click_y,0,"brick","textures/brick.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"brick","textures/brick.png");
 									break;
 								case 1:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/cobblestone.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/cobblestone.png");
 									break;
 								case 2:
-									b = new Block(coord_click_x,coord_click_y,0,"diamond_block","textures/diamond_block.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"diamond_block","textures/diamond_block.png");
 									break;
 								case 3:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/dirt.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/dirt.png");
 									break;
 								case 4:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/glass.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/glass.png");
 									break;
 								case 5:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/glowstone.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/glowstone.png");
 									break;
 								case 6:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/gold_block.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/gold_block.png");
 									break;
 								case 7:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/hay_block_side.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/hay_block_side.png");
 									break;
 								case 8:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/ice.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/ice.png");
 									break;
 								case 9:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/iron_block.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/iron_block.png");
 									break;
 								case 10:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_acacia.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_acacia.png");
 									break;
 								case 11:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_big_oak.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_big_oak.png");
 									break;
 								case 12:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_birch.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_birch.png");
 									break;
 								case 13:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_jungle.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_jungle.png");
 									break;
 								case 14:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/log_spruce.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_spruce.png");
 									break;
 								case 15:
-									b = new Block(coord_click_x,coord_click_y,0,"cobblestone","textures/planks_oak.png");
+									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/planks_oak.png");
 									break;
 
 
@@ -181,7 +203,39 @@ Sdlinterface::Sdlinterface()
 					}
 					if (event.button.x<=625 && event.button.y>425)
 					{
-						selector_pos=(int)((event.button.x-10)/35);
+						if (event.button.x<570)
+						{
+							selector_pos=(int)((event.button.x-10)/35);
+						}
+
+						if (event.button.x>600 && event.button.y>436 && event.button.x<613 && event.button.y<450)
+						{
+							if (layer<9)
+							{
+								layer++;
+								arrow_up_pressed=true;
+								render();
+								std::this_thread::sleep_for(std::chrono::milliseconds(200));
+								render();
+
+							}
+						}
+
+						if (event.button.x>600 && event.button.y>452 && event.button.x<613 && event.button.y<465)
+						{
+							if (layer>0)
+							{
+								layer--;
+								arrow_down_pressed=true;
+								render();
+								std::this_thread::sleep_for(std::chrono::milliseconds(200));
+								render();
+
+							}
+						}
+					
+
+
 						render();
 					}
 				}
