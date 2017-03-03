@@ -17,6 +17,8 @@ Based on this in game command:
 
 ## Depends on:
 - SDL
+- SDL_image
+- SDL_ttf
 
 ## Installation process:
 - Clone repository
