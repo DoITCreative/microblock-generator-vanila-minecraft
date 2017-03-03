@@ -114,10 +114,6 @@ void Sdlinterface::load(std::string filename)
 	std::string line;
 	std::ifstream myfile;
 	myfile.open(filename);
-	for (Block *b: block_list)
-	{
-		delete(b);
-	}
 	block_list.clear();
 	if (myfile.is_open()) 
 	{
