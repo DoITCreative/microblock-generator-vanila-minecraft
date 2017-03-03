@@ -8,6 +8,7 @@
 #include <chrono>
 #include <iostream>
 #include <string>
+#include <fstream>
 
 void Sdlinterface::render()
 {
@@ -62,7 +63,6 @@ void Sdlinterface::render()
 			apply_surface(n->getX()*25,n->getY()*25, image, screen);
 		}
 	}
-	
 
 	int count=0;
 	for (std::string i:slots)
@@ -72,7 +72,13 @@ void Sdlinterface::render()
 		count++;
 	}
 
-	for (int i=0; i<16; i++) 
+	image = load_image("interface_pngs/save.png");
+	apply_surface(503,437,image,screen);
+
+	image = load_image("interface_pngs/load.png");
+	apply_surface(538,437,image,screen);
+
+	for (int i=0; i<14; i++) 
 	{
 		if (selector_pos==i) 
 		{
@@ -83,6 +89,92 @@ void Sdlinterface::render()
 
 	SDL_Flip(screen);
 }
+
+void Sdlinterface::save(std::string filename)
+{
+	std::ofstream myfile;
+	myfile.open(filename);
+	if (myfile.is_open()) 
+	{
+		for (Block* b:block_list)
+		{
+			myfile<<b->getX()<<","<<b->getY()<<","<<b->getZ()<<","<<b->getDamage()<<","<<b->getId()<<","<<b->getTexture()<<"\n";	
+		}
+		myfile.close();
+	} 
+	else 
+	{
+	//	std::cout << "Can not open file!" << endl;
+	}
+	render();
+}
+
+void Sdlinterface::load(std::string filename)
+{
+	std::string line;
+	std::ifstream myfile;
+	myfile.open(filename);
+	for (Block *b: block_list)
+	{
+		delete(b);
+	}
+	block_list.clear();
+	if (myfile.is_open()) 
+	{
+		int xc;
+		int yc;
+		int zc;
+		int damage;
+		std::string id;
+		std::string texture;
+		std::string delimiter = ",";
+		size_t pos;
+
+		while (getline(myfile,line)) 
+		{
+			xc = 0;
+			yc = 0;
+			zc = 0;
+			damage = 0;
+			id = "";
+			texture = "";
+			pos = 0;
+			
+			pos = line.find(delimiter);
+			xc = stoi(line.substr(0,pos));
+			line.erase(0,pos+delimiter.length());
+			
+			pos = line.find(delimiter);
+			yc = stoi(line.substr(0,pos));
+			line.erase(0,pos+delimiter.length());
+			
+			pos = line.find(delimiter);
+			zc = stoi(line.substr(0,pos));
+			line.erase(0,pos+delimiter.length());
+			
+			pos = line.find(delimiter);
+			damage = stoi(line.substr(0,pos));
+			line.erase(0,pos+delimiter.length());
+			
+			pos = line.find(delimiter);
+			id = line.substr(0,pos);
+			line.erase(0,pos+delimiter.length());
+			
+			texture = line;
+			
+			Block* block;
+			block = new Block(xc,yc,zc,damage,id,texture);
+			block_list.push_back(block);
+		}
+		myfile.close();
+	} 
+	else 
+	{
+		//std::cout << "The file could not be read!" << endl;
+	}
+	render();
+}
+
 
 Sdlinterface::Sdlinterface()
 {
@@ -97,10 +189,8 @@ Sdlinterface::Sdlinterface()
 	slots.push_back("textures/glowstone.png");
 	slots.push_back("textures/gold_block.png");
 	slots.push_back("textures/hay_block_side.png");
-	slots.push_back("textures/ice.png");
 	slots.push_back("textures/iron_block.png");
 	slots.push_back("textures/log_acacia.png");
-	slots.push_back("textures/log_big_oak.png");
 	slots.push_back("textures/log_birch.png");
 	slots.push_back("textures/log_jungle.png");
 	slots.push_back("textures/log_spruce.png");
@@ -171,31 +261,23 @@ Sdlinterface::Sdlinterface()
 									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/hay_block_side.png");
 									break;
 								case 8:
-									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/ice.png");
-									break;
-								case 9:
 									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/iron_block.png");
 									break;
-								case 10:
+								case 9:
 									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_acacia.png");
 									break;
-								case 11:
-									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_big_oak.png");
-									break;
-								case 12:
+								case 10:
 									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_birch.png");
 									break;
-								case 13:
+								case 11:
 									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_jungle.png");
 									break;
-								case 14:
+								case 12:
 									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/log_spruce.png");
 									break;
-								case 15:
+								case 13:
 									b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone","textures/planks_oak.png");
 									break;
-
-
 							}
 							block_list.push_back(b);
 						}
@@ -203,9 +285,19 @@ Sdlinterface::Sdlinterface()
 					}
 					if (event.button.x<=625 && event.button.y>425)
 					{
-						if (event.button.x<570)
+						if (event.button.x<500)
 						{
 							selector_pos=(int)((event.button.x-10)/35);
+						}
+
+						if (event.button.x>500&&event.button.x<535)
+						{
+							save("savefile");
+						}
+
+						if (event.button.x>535&&event.button.x<570)
+						{
+							load("savefile");
 						}
 
 						if (event.button.x>600 && event.button.y>436 && event.button.x<613 && event.button.y<450)
@@ -217,7 +309,6 @@ Sdlinterface::Sdlinterface()
 								render();
 								std::this_thread::sleep_for(std::chrono::milliseconds(200));
 								render();
-
 							}
 						}
 
@@ -230,12 +321,8 @@ Sdlinterface::Sdlinterface()
 								render();
 								std::this_thread::sleep_for(std::chrono::milliseconds(200));
 								render();
-
 							}
 						}
-					
-
-
 						render();
 					}
 				}
