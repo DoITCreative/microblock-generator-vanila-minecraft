@@ -73,10 +73,10 @@ void Sdlinterface::render()
 	}
 
 	image = load_image("interface_pngs/save.png");
-	apply_surface(503,437,image,screen);
+	apply_surface(503,434,image,screen);
 
 	image = load_image("interface_pngs/load.png");
-	apply_surface(538,437,image,screen);
+	apply_surface(538,434,image,screen);
 
 	for (int i=0; i<14; i++) 
 	{
