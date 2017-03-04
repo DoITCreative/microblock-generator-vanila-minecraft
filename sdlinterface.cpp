@@ -93,7 +93,7 @@ void Sdlinterface::render()
 void Sdlinterface::save(std::string filename)
 {
 	std::ofstream myfile;
-	myfile.open(filename);
+	myfile.open(filename.c_str());
 	if (myfile.is_open()) 
 	{
 		for (Block* b:block_list)
@@ -113,7 +113,7 @@ void Sdlinterface::load(std::string filename)
 {
 	std::string line;
 	std::ifstream myfile;
-	myfile.open(filename);
+	myfile.open(filename.c_str());
 	block_list.clear();
 	if (myfile.is_open()) 
 	{
@@ -303,7 +303,7 @@ Sdlinterface::Sdlinterface()
 								layer++;
 								arrow_up_pressed=true;
 								render();
-								std::this_thread::sleep_for(std::chrono::milliseconds(200));
+								//std::this_thread::sleep_for(std::chrono::milliseconds(200));
 								render();
 							}
 						}
@@ -315,7 +315,7 @@ Sdlinterface::Sdlinterface()
 								layer--;
 								arrow_down_pressed=true;
 								render();
-								std::this_thread::sleep_for(std::chrono::milliseconds(200));
+								//std::this_thread::sleep_for(std::chrono::milliseconds(200));
 								render();
 							}
 						}

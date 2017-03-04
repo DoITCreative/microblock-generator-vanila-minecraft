@@ -23,7 +23,7 @@ string readfile(string filename)
 	string line;
 	string output = "";
 	ifstream myfile;
-	myfile.open(filename);
+	myfile.open(filename.c_str());
 	if (myfile.is_open()) {
 		cout << "file " << filename << " opened!" <<endl;
 		cout << endl;
@@ -40,7 +40,7 @@ string readfile(string filename)
 void writefile(string filename, string text)
 {
 	ofstream myfile;
-	myfile.open(filename);
+	myfile.open(filename.c_str());
 	if (myfile.is_open()) {
 		myfile << text<< endl;
 	} else {
