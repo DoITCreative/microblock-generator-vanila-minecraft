@@ -87,6 +87,20 @@ void Sdlinterface::render()
 		}
 	}
 
+	if (menuopened)
+	{
+		image = load_image("interface_pngs/block_select_menu.png");
+		apply_surface(7,5,image,screen);
+
+		for (int y=0; y<(int)(all_blocks.size()/18); y++)
+		{
+			for (int x=0; x<18; x++)
+			{
+				image = load_image(all_blocks.at(y*18+x));
+				apply_surface(x*32+28,32*y+25,image,screen);
+			}
+		}
+	}
 	SDL_Flip(screen);
 }
 
@@ -175,6 +189,7 @@ void Sdlinterface::load(std::string filename)
 Sdlinterface::Sdlinterface()
 {
 	bool quit = false;
+	menuopened=false;
 	init();
 
 	slots.push_back("textures/brick.png");
@@ -191,7 +206,13 @@ Sdlinterface::Sdlinterface()
 	slots.push_back("textures/log_jungle.png");
 	slots.push_back("textures/log_spruce.png");
 	slots.push_back("textures/planks_oak.png");
-	
+
+
+	for (int i=0; i<220; i++)
+	{
+		all_blocks.push_back("textures/planks_oak.png");
+	}
+
 	render();
 	while (quit == false)
 	{
@@ -227,7 +248,7 @@ Sdlinterface::Sdlinterface()
 							}
 							counter++;
 						}
-						if (!isset)
+						if (!isset&&!menuopened)
 						{
 							Block* b;
 							switch (selector_pos)
@@ -283,7 +304,16 @@ Sdlinterface::Sdlinterface()
 					{
 						if (event.button.x<500)
 						{
-							selector_pos=(int)((event.button.x-10)/35);
+							if(selector_pos!=(int)((event.button.x-10)/35))
+							{
+								selector_pos=(int)((event.button.x-10)/35);
+							}
+							else
+							{
+								//Open menu to select block
+								blockselect();	
+							}
+								
 						}
 
 						if (event.button.x>500&&event.button.x<535)
@@ -369,5 +399,18 @@ void Sdlinterface::clean_up()
 	TTF_CloseFont(font);
 	TTF_Quit();
 	SDL_Quit();
+}
+
+void Sdlinterface::blockselect()
+{
+	if (menuopened)
+	{
+		menuopened=false;
+		render();
+	}
+	else
+	{
+		menuopened=true;
+	}
 }
 

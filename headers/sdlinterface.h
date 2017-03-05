@@ -21,11 +21,13 @@ class Sdlinterface
 		SDL_Color textColor = {255,255,255};
 		SDL_Event event;
 		int layer = 0;
+		bool menuopened;
 		bool arrow_up_pressed=false;
 		bool arrow_down_pressed=false;
 		int selector_pos = 0;
 		std::vector<Block*> block_list = {};
 		std::vector<std::string> slots = {};
+		std::vector<std::string> all_blocks = {};
 
 	private:
 		SDL_Surface* load_image(std::string filename);
@@ -33,6 +35,7 @@ class Sdlinterface
 		void init();
 		void clean_up();
 		void render();
+		void blockselect();
 		void save(std::string filename);
 		void load(std::string filename);
 
