@@ -303,7 +303,7 @@ Sdlinterface::Sdlinterface()
 								layer++;
 								arrow_up_pressed=true;
 								render();
-								//std::this_thread::sleep_for(std::chrono::milliseconds(200));
+								std::this_thread::sleep_for(std::chrono::milliseconds(200));
 								render();
 							}
 						}
@@ -315,7 +315,7 @@ Sdlinterface::Sdlinterface()
 								layer--;
 								arrow_down_pressed=true;
 								render();
-								//std::this_thread::sleep_for(std::chrono::milliseconds(200));
+								std::this_thread::sleep_for(std::chrono::milliseconds(200));
 								render();
 							}
 						}
