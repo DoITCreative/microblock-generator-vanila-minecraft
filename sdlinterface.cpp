@@ -207,22 +207,22 @@ Sdlinterface::Sdlinterface()
 	slots.push_back("textures/log_spruce.png");
 	slots.push_back("textures/planks_oak.png");
 
-
-	for (int i=0; i<15; i++) //220 for 1
+	all_blocks.push_back("textures/brick.png");
+	all_blocks.push_back("textures/cobblestone.png");
+	all_blocks.push_back("textures/diamond_block.png");
+	all_blocks.push_back("textures/dirt.png");
+	all_blocks.push_back("textures/glass.png");
+	all_blocks.push_back("textures/glowstone.png");
+	all_blocks.push_back("textures/gold_block.png");
+	all_blocks.push_back("textures/hay_block_side.png");
+	all_blocks.push_back("textures/iron_block.png");
+	all_blocks.push_back("textures/log_acacia.png");
+	all_blocks.push_back("textures/log_birch.png");
+	all_blocks.push_back("textures/log_jungle.png");
+	all_blocks.push_back("textures/log_spruce.png");
+	all_blocks.push_back("textures/planks_oak.png");
+	for (int i=0; i<202; i++) // 216 for 1
 	{
-		all_blocks.push_back("textures/brick.png");
-		all_blocks.push_back("textures/cobblestone.png");
-		all_blocks.push_back("textures/diamond_block.png");
-		all_blocks.push_back("textures/dirt.png");
-		all_blocks.push_back("textures/glass.png");
-		all_blocks.push_back("textures/glowstone.png");
-		all_blocks.push_back("textures/gold_block.png");
-		all_blocks.push_back("textures/hay_block_side.png");
-		all_blocks.push_back("textures/iron_block.png");
-		all_blocks.push_back("textures/log_acacia.png");
-		all_blocks.push_back("textures/log_birch.png");
-		all_blocks.push_back("textures/log_jungle.png");
-		all_blocks.push_back("textures/log_spruce.png");
 		all_blocks.push_back("textures/planks_oak.png");
 	}
 
