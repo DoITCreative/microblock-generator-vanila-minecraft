@@ -27,6 +27,8 @@ class Sdlinterface
 		int selector_pos = 0;
 		std::vector<Block*> block_list = {};
 		std::vector<std::string> slots = {};
+		std::vector<std::string> ids = {};
+		std::vector<std::string> all_ids = {};
 		std::vector<std::string> all_blocks = {};
 
 	private:

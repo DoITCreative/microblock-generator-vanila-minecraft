@@ -10,7 +10,6 @@
 #include <string>
 #include <fstream>
 
-
 //Main function in this class
 Sdlinterface::Sdlinterface()
 {
@@ -33,6 +32,159 @@ Sdlinterface::Sdlinterface()
 	slots.push_back("textures/log_jungle.png");
 	slots.push_back("textures/log_spruce.png");
 	slots.push_back("textures/planks_oak.png");
+
+	//Fills id vector for blocks
+	ids.push_back("brick");
+	ids.push_back("cobblestone");
+	ids.push_back("diamond_block");
+	ids.push_back("dirt");
+	ids.push_back("glass");
+	ids.push_back("glowstone");
+	ids.push_back("gold_block");
+	ids.push_back("hay_block_side");
+	ids.push_back("iron_block");
+	ids.push_back("log_acacia");
+	ids.push_back("log_birch");
+	ids.push_back("log_jungle");
+	ids.push_back("log_spruce");
+	ids.push_back("planks_oak");
+
+	//Fills block select menu with blocks
+	all_ids.push_back("bone_block_top");
+	all_ids.push_back("bookshelf");
+	all_ids.push_back("brick");
+	all_ids.push_back("clay");
+	all_ids.push_back("coal_block");
+	all_ids.push_back("coal_ore");
+	all_ids.push_back("coarse_dirt");
+	all_ids.push_back("cobblestone");
+	all_ids.push_back("cobblestone_mossy");
+	all_ids.push_back("crafting_table_front");
+	all_ids.push_back("diamond_block");
+	all_ids.push_back("diamond_ore");
+	all_ids.push_back("dirt");
+	all_ids.push_back("dirt_podzol_top");
+	all_ids.push_back("emerald_block");
+	all_ids.push_back("emerald_ore");
+	all_ids.push_back("end_bricks");
+	all_ids.push_back("end_stone");
+	all_ids.push_back("glass");
+	all_ids.push_back("glass_black");
+	all_ids.push_back("glass_blue");
+	all_ids.push_back("glass_brown");
+	all_ids.push_back("glass_cyan");
+	all_ids.push_back("glass_gray");
+	all_ids.push_back("glass_green");
+	all_ids.push_back("glass_light_blue");
+	all_ids.push_back("glass_lime");
+	all_ids.push_back("glass_magenta");
+	all_ids.push_back("glass_orange");
+	all_ids.push_back("glass_pink");
+	all_ids.push_back("glass_purple");
+	all_ids.push_back("glass_red");
+	all_ids.push_back("glass_silver");
+	all_ids.push_back("glass_white");
+	all_ids.push_back("glass_yellow");
+	all_ids.push_back("glowstone");
+	all_ids.push_back("gold_block");
+	all_ids.push_back("gold_ore");
+	all_ids.push_back("gravel");
+	all_ids.push_back("hardened_clay");
+	all_ids.push_back("hardened_clay_stained_black");
+	all_ids.push_back("hardened_clay_stained_blue");
+	all_ids.push_back("hardened_clay_stained_brown");
+	all_ids.push_back("hardened_clay_stained_cyan");
+	all_ids.push_back("hardened_clay_stained_gray");
+	all_ids.push_back("hardened_clay_stained_green");
+	all_ids.push_back("hardened_clay_stained_light_blue");
+	all_ids.push_back("hardened_clay_stained_lime");
+	all_ids.push_back("hardened_clay_stained_magenta");
+	all_ids.push_back("hardened_clay_stained_orange");
+	all_ids.push_back("hardened_clay_stained_pink");
+	all_ids.push_back("hardened_clay_stained_purple");
+	all_ids.push_back("hardened_clay_stained_red");
+	all_ids.push_back("hardened_clay_stained_silver");
+	all_ids.push_back("hardened_clay_stained_white");
+	all_ids.push_back("hardened_clay_stained_yellow");
+	all_ids.push_back("hay_block_side");
+	all_ids.push_back("ice");
+	all_ids.push_back("ice_packed");
+	all_ids.push_back("iron_block");
+	all_ids.push_back("iron_ore");
+	all_ids.push_back("lapis_block");
+	all_ids.push_back("lapis_ore");
+	all_ids.push_back("log_acacia");
+	all_ids.push_back("log_big_oak");
+	all_ids.push_back("log_birch");
+	all_ids.push_back("log_jungle");
+	all_ids.push_back("log_spruce");
+	all_ids.push_back("melon_side");
+	all_ids.push_back("mycelium_side");
+	all_ids.push_back("nether_brick");
+	all_ids.push_back("netherrack");
+	all_ids.push_back("obsidian");
+	all_ids.push_back("planks_acacia");
+	all_ids.push_back("planks_big_oak");
+	all_ids.push_back("planks_birch");
+	all_ids.push_back("planks_jungle");
+	all_ids.push_back("planks_oak");
+	all_ids.push_back("planks_spruce");
+	all_ids.push_back("prismarine_bricks");
+	all_ids.push_back("prismarine_dark");
+	all_ids.push_back("pumpkin_face_off");
+	all_ids.push_back("pumpkin_face_on");
+	all_ids.push_back("purpur_pillar");
+	all_ids.push_back("quartz_block_bottom");
+	all_ids.push_back("quartz_block_chiseled");
+	all_ids.push_back("quartz_block_lines");
+	all_ids.push_back("quartz_ore");
+	all_ids.push_back("red_nether_brick");
+	all_ids.push_back("red_sand");
+	all_ids.push_back("red_sandstone_carved");
+	all_ids.push_back("red_sandstone_normal");
+	all_ids.push_back("red_sandstone_smooth");
+	all_ids.push_back("redstone_block");
+	all_ids.push_back("redstone_lamp_off");
+	all_ids.push_back("redstone_lamp_on");
+	all_ids.push_back("redstone_ore");
+	all_ids.push_back("sand");
+	all_ids.push_back("sandstone_carved");
+	all_ids.push_back("sandstone_normal");
+	all_ids.push_back("sandstone_smooth");
+	all_ids.push_back("slime");
+	all_ids.push_back("snow");
+	all_ids.push_back("soul_sand");
+	all_ids.push_back("sponge");
+	all_ids.push_back("sponge_wet");
+	all_ids.push_back("stone");
+	all_ids.push_back("stone_andesite");
+	all_ids.push_back("stone_andesite_smooth");
+	all_ids.push_back("stone_diorite");
+	all_ids.push_back("stone_diorite_smooth");
+	all_ids.push_back("stone_granite");
+	all_ids.push_back("stone_granite_smooth");
+	all_ids.push_back("stone_slab_side");
+	all_ids.push_back("stonebrick");
+	all_ids.push_back("stonebrick_carved");
+	all_ids.push_back("stonebrick_cracked");
+	all_ids.push_back("stonebrick_mossy");
+	all_ids.push_back("tnt_side");
+	all_ids.push_back("wool_colored_black");
+	all_ids.push_back("wool_colored_blue");
+	all_ids.push_back("wool_colored_brown");
+	all_ids.push_back("wool_colored_cyan");
+	all_ids.push_back("wool_colored_gray");
+	all_ids.push_back("wool_colored_green");
+	all_ids.push_back("wool_colored_light_blue");
+	all_ids.push_back("wool_colored_lime");
+	all_ids.push_back("wool_colored_magenta");
+	all_ids.push_back("wool_colored_orange");
+	all_ids.push_back("wool_colored_pink");
+	all_ids.push_back("wool_colored_purple");
+	all_ids.push_back("wool_colored_red");
+	all_ids.push_back("wool_colored_silver");
+	all_ids.push_back("wool_colored_white");
+	all_ids.push_back("wool_colored_yellow");
 
 	//Fills block select menu with blocks
 	all_blocks.push_back("textures/bone_block_top.png");
@@ -171,15 +323,6 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/wool_colored_white.png");
 	all_blocks.push_back("textures/wool_colored_yellow.png");
 
-	/*
-	// Fills rest of space with garbage blocks
-	for (int i=0; i<81; i++) // 216 for 1
-	{
-		all_blocks.push_back("textures/planks_oak.png");
-	}
-	*/
-	
-
 	render(); //Redraws screen
 	while (quit == false)
 	{
@@ -210,6 +353,7 @@ Sdlinterface::Sdlinterface()
 								if (yclick*18+xclick<all_blocks.size())
 								{
 									slots.at(selector_pos)=all_blocks.at(yclick*18+xclick); //Changes picture on bottom pannel, where sector points
+									ids.at(selector_pos)=all_ids.at(yclick*18+xclick); //Changes picture on bottom pannel, where sector points
 									menuopened=false;
 								}
 								render();
@@ -240,46 +384,46 @@ Sdlinterface::Sdlinterface()
 								switch (selector_pos) //Places block from selector to the grid
 								{
 									case 0:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"brick",slots.at(0)); //TODO ids
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(0),slots.at(0));
 										break;
 									case 1:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(1));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(1),slots.at(1));
 										break;
 									case 2:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"diamond_block",slots.at(2));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(2),slots.at(2));
 										break;
 									case 3:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(3));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(3),slots.at(3));
 										break;
 									case 4:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(4));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(4),slots.at(4));
 										break;
 									case 5:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(5));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(5),slots.at(5));
 										break;
 									case 6:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(6));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(6),slots.at(6));
 										break;
 									case 7:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(7));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(7),slots.at(7));
 										break;
 									case 8:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(8));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(8),slots.at(8));
 										break;
 									case 9:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(9));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(9),slots.at(9));
 										break;
 									case 10:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(10));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(10),slots.at(10));
 										break;
 									case 11:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(11));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(11),slots.at(11));
 										break;
 									case 12:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(12));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(12),slots.at(12));
 										break;
 									case 13:
-										b = new Block(coord_click_x,coord_click_y,layer,0,"cobblestone",slots.at(13));
+										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(13),slots.at(13));
 										break;
 								}
 								block_list.push_back(b);
@@ -439,7 +583,7 @@ void Sdlinterface::render()
 		}
 	}
 	
-	//Loads block select menu    TODO check y
+	//Loads block select menu TODO check y
 	if (menuopened)
 	{
 		image = load_image("interface_pngs/block_select_menu.png");
