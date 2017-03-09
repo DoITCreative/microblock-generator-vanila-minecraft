@@ -49,7 +49,22 @@ Sdlinterface::Sdlinterface()
 	ids.push_back("log_spruce");
 	ids.push_back("planks_oak");
 
-	//Fills block select menu with blocks
+	//Fills damage vector for blocks
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+	damage.push_back(0);
+
 	all_ids.push_back("bone_block_top");
 	all_ids.push_back("bookshelf");
 	all_ids.push_back("brick");
@@ -185,6 +200,142 @@ Sdlinterface::Sdlinterface()
 	all_ids.push_back("wool_colored_silver");
 	all_ids.push_back("wool_colored_white");
 	all_ids.push_back("wool_colored_yellow");
+
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
+	all_damage.push_back(0);
 
 	//Fills block select menu with blocks
 	all_blocks.push_back("textures/bone_block_top.png");
@@ -354,6 +505,7 @@ Sdlinterface::Sdlinterface()
 								{
 									slots.at(selector_pos)=all_blocks.at(yclick*18+xclick); //Changes picture on bottom pannel, where sector points
 									ids.at(selector_pos)=all_ids.at(yclick*18+xclick); //Changes picture on bottom pannel, where sector points
+									damage.at(selector_pos)=all_damage.at(yclick*18+xclick); //Changes picture on bottom pannel, where sector points
 									menuopened=false;
 								}
 								render();
@@ -384,46 +536,46 @@ Sdlinterface::Sdlinterface()
 								switch (selector_pos) //Places block from selector to the grid
 								{
 									case 0:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(0),slots.at(0));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(0),ids.at(0),slots.at(0));
 										break;
 									case 1:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(1),slots.at(1));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(1),ids.at(1),slots.at(1));
 										break;
 									case 2:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(2),slots.at(2));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(2),ids.at(2),slots.at(2));
 										break;
 									case 3:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(3),slots.at(3));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(3),ids.at(3),slots.at(3));
 										break;
 									case 4:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(4),slots.at(4));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(4),ids.at(4),slots.at(4));
 										break;
 									case 5:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(5),slots.at(5));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(5),ids.at(5),slots.at(5));
 										break;
 									case 6:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(6),slots.at(6));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(6),ids.at(6),slots.at(6));
 										break;
 									case 7:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(7),slots.at(7));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(7),ids.at(7),slots.at(7));
 										break;
 									case 8:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(8),slots.at(8));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(8),ids.at(8),slots.at(8));
 										break;
 									case 9:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(9),slots.at(9));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(9),ids.at(9),slots.at(9));
 										break;
 									case 10:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(10),slots.at(10));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(10),ids.at(10),slots.at(10));
 										break;
 									case 11:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(11),slots.at(11));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(11),ids.at(11),slots.at(11));
 										break;
 									case 12:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(12),slots.at(12));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(12),ids.at(12),slots.at(12));
 										break;
 									case 13:
-										b = new Block(coord_click_x,coord_click_y,layer,0,ids.at(13),slots.at(13));
+										b = new Block(coord_click_x,coord_click_y,layer,damage.at(13),ids.at(13),slots.at(13));
 										break;
 								}
 								block_list.push_back(b);

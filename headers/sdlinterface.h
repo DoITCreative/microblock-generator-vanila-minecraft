@@ -29,6 +29,8 @@ class Sdlinterface
 		std::vector<std::string> slots = {};
 		std::vector<std::string> ids = {};
 		std::vector<std::string> all_ids = {};
+		std::vector<int> damage = {};
+		std::vector<int> all_damage = {};
 		std::vector<std::string> all_blocks = {};
 	private:
 		SDL_Surface* load_image(std::string filename);
