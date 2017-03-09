@@ -171,11 +171,13 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/wool_colored_white.png");
 	all_blocks.push_back("textures/wool_colored_yellow.png");
 
+	/*
 	// Fills rest of space with garbage blocks
 	for (int i=0; i<81; i++) // 216 for 1
 	{
 		all_blocks.push_back("textures/planks_oak.png");
 	}
+	*/
 	
 
 	render(); //Redraws screen
@@ -205,8 +207,11 @@ Sdlinterface::Sdlinterface()
 							{
 								int xclick=(int)((event.button.x-28)/32);
 								int yclick=(int)((event.button.y-25)/32);
-								slots.at(selector_pos)=all_blocks.at(yclick*18+xclick); //Changes picture on bottom pannel, where sector points
-								menuopened=false;
+								if (yclick*18+xclick<all_blocks.size())
+								{
+									slots.at(selector_pos)=all_blocks.at(yclick*18+xclick); //Changes picture on bottom pannel, where sector points
+									menuopened=false;
+								}
 								render();
 							}
 						}
@@ -439,13 +444,16 @@ void Sdlinterface::render()
 	{
 		image = load_image("interface_pngs/block_select_menu.png");
 		apply_surface(7,5,image,screen);
-
-		for (int y=0; y<(int)(all_blocks.size()/18); y++)
+		
+		for (int y=0; y<(int)(all_blocks.size()/18)+1; y++)
 		{
 			for (int x=0; x<18; x++)
 			{
-				image = load_image(all_blocks.at(y*18+x));
-				apply_surface(x*32+28,32*y+25,image,screen);
+				if (y*18+x<all_blocks.size())
+				{
+					image = load_image(all_blocks.at(y*18+x));
+					apply_surface(x*32+28,32*y+25,image,screen);
+				}
 			}
 		}
 	}
