@@ -40,7 +40,7 @@ class Sdlinterface
 		void render();
 		void save(std::string filename);
 		void load(std::string filename);
-
+		void writeCommandToFile(std::string filename);
 };
 
 #endif

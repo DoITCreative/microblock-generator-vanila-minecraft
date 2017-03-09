@@ -481,6 +481,8 @@ Sdlinterface::Sdlinterface()
 		{
 			if (event.type == SDL_QUIT) //On "x"(Quit) button pressed
 			{
+				//Saves blocks to output file
+				writeCommandToFile("output.txt");
 				//Unload block_list from memory
 				for (Block* b:block_list)
 				{
@@ -650,6 +652,25 @@ Sdlinterface::Sdlinterface()
 		}
 	}
 	clean_up(); //Removes garbage
+}
+
+//Writes output to file
+void Sdlinterface::writeCommandToFile(std::string filename)
+{
+	std::ofstream myfile;
+	myfile.open(filename.c_str());
+	if (myfile.is_open()) 
+	{
+		for (Block* b:block_list)
+		{
+			myfile<<"/summon ArmorStand ~"<<-0.137*b->getX()<<"f ~"<<0.043*b->getY()<<"f ~"<<-0.412*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<"},{}], Pose:{RightArm:[325f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
+		}
+		myfile.close();
+	} 
+	else 
+	{
+	//	std::cout << "Can not open file!" << endl;
+	}
 }
 
 //Draws graphics on screen
