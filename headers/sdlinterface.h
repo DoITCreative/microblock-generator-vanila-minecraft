@@ -30,7 +30,6 @@ class Sdlinterface
 		std::vector<std::string> ids = {};
 		std::vector<std::string> all_ids = {};
 		std::vector<std::string> all_blocks = {};
-
 	private:
 		SDL_Surface* load_image(std::string filename);
 		void apply_surface(int x, int y, SDL_Surface* source, SDL_Surface* destination);

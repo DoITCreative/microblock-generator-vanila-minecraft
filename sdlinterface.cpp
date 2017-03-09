@@ -583,7 +583,7 @@ void Sdlinterface::render()
 		}
 	}
 	
-	//Loads block select menu TODO check y
+	//Loads block select menu
 	if (menuopened)
 	{
 		image = load_image("interface_pngs/block_select_menu.png");
