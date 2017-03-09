@@ -35,7 +35,6 @@ class Sdlinterface
 		void init();
 		void clean_up();
 		void render();
-		void blockselect();
 		void save(std::string filename);
 		void load(std::string filename);
 
