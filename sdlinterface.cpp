@@ -657,13 +657,16 @@ Sdlinterface::Sdlinterface()
 //Writes output to file
 void Sdlinterface::writeCommandToFile(std::string filename)
 {
+	int x=-978;
+	int y=59;
+	int z=-745;
 	std::ofstream myfile;
 	myfile.open(filename.c_str());
 	if (myfile.is_open()) 
 	{
 		for (Block* b:block_list)
 		{
-			myfile<<"/summon ArmorStand ~"<<-0.137+0.187*b->getX()<<"f ~"<<0.043+0.187*b->getY()<<"f ~"<<-0.412+0.187*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<"},{}], Pose:{RightArm:[325f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
+			myfile<<"/summon armor_stand ~"<<-1.5+(0.187*b->getX())<<"f ~"<<3.35+(-1*(0.187+0.187*b->getY()))<<"f ~"<<0.187*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<",Count:1},{}], Pose:{RightArm:[-15f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
 		}
 		myfile.close();
 	} 
