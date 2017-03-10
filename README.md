@@ -1,7 +1,5 @@
 # Simple command generator, that will create microblock structures in vanila minecraft.
 
-![MicroblockPNG](https://github.com/DoITCreative/microblock-generator-vanila-minecraft/raw/master/docs/preview.png)
-
 ![MicroblockPNG](https://github.com/DoITCreative/microblock-generator-vanila-minecraft/raw/master/docs/preview2.png)
 
 # Program is in alpha
@@ -9,6 +7,8 @@
 This program will allow users to create structures layer by
 layer in editor and generate list of commands to build that 
 structures in game using command block.
+
+![MicroblockPNG](https://github.com/DoITCreative/microblock-generator-vanila-minecraft/raw/master/docs/preview.png)
 
 # How to use:
 - Install microblockgen (see bellow how)
