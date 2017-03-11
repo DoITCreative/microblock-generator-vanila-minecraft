@@ -666,7 +666,7 @@ void Sdlinterface::writeCommandToFile(std::string filename)
 	{
 		for (Block* b:block_list)
 		{
-			myfile<<"/summon armor_stand ~"<<-1.5+(0.187*b->getX())<<"f ~"<<3.35+(-1*(0.187+0.187*b->getY()))<<"f ~"<<0.187*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<",Count:1},{}], Pose:{RightArm:[-15f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
+			myfile<<"/summon armor_stand ~"<<-1.5+(0.187*b->getX())<<"f ~"<<3.35+(-1*(0.187+0.187*b->getY()))<<"f ~"<<-0.187*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<",Count:1},{}], Pose:{RightArm:[-15f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
 		}
 		myfile.close();
 	} 
