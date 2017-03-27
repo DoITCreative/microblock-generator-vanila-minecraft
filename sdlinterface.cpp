@@ -29,9 +29,6 @@ Sdlinterface::Sdlinterface()
 	slots.push_back("textures/iron_block.png");
 	slots.push_back("textures/log_acacia.png");
 	slots.push_back("textures/log_birch.png");
-	slots.push_back("textures/log_jungle.png");
-	slots.push_back("textures/log_spruce.png");
-	slots.push_back("textures/planks_oak.png");
 
 	//Fills id vector for blocks
 	ids.push_back("brick");
@@ -45,9 +42,6 @@ Sdlinterface::Sdlinterface()
 	ids.push_back("iron_block");
 	ids.push_back("log2");
 	ids.push_back("log");
-	ids.push_back("log");
-	ids.push_back("log");
-	ids.push_back("planks");
 
 	//Fills damage vector for blocks
 	damage.push_back(0);
@@ -61,9 +55,6 @@ Sdlinterface::Sdlinterface()
 	damage.push_back(0);
 	damage.push_back(0);
 	damage.push_back(2);
-	damage.push_back(3);
-	damage.push_back(1);
-	damage.push_back(0);
 
 	all_ids.push_back("bone_block_top");
 	all_ids.push_back("bookshelf");
@@ -593,7 +584,8 @@ Sdlinterface::Sdlinterface()
 					}
 					if (event.button.x<=625 && event.button.y>425) //If bottom menu is clicked
 					{
-						if (event.button.x<500) //Clicked on block in bottom menu
+						std::cout<<"Click on: X:"<<event.button.x<<" Y:"<<event.button.y<<"\n";
+						if (event.button.x<395) //Clicked on block in bottom menu
 						{
 							if(selector_pos!=(int)((event.button.x-10)/35)) //Put selector on click place
 							{
