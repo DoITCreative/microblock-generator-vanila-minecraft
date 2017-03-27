@@ -422,7 +422,7 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/planks_jungle.png");
 	all_blocks.push_back("textures/planks_oak.png");
 	all_blocks.push_back("textures/planks_spruce.png");
-	all_blocks.push_back("textures/wool_colored_pink.png"); //TODO change this to prismarine texture
+	all_blocks.push_back("textures/prismarine_rough.png");
 	all_blocks.push_back("textures/prismarine_bricks.png");
 	all_blocks.push_back("textures/prismarine_dark.png");
 	all_blocks.push_back("textures/pumpkin_face_off.png");
