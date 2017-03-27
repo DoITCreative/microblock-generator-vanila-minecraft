@@ -129,7 +129,8 @@ Sdlinterface::Sdlinterface()
 	all_ids.push_back("lapis_block");
 	all_ids.push_back("lapis_ore");
 	all_ids.push_back("log2");
-	all_ids.push_back("log2"); //TODO add oak_log
+	all_ids.push_back("log2");
+	all_ids.push_back("log");
 	all_ids.push_back("log");
 	all_ids.push_back("log");
 	all_ids.push_back("log");
@@ -144,6 +145,7 @@ Sdlinterface::Sdlinterface()
 	all_ids.push_back("planks");
 	all_ids.push_back("planks");
 	all_ids.push_back("planks");
+	all_ids.push_back("prismarine");
 	all_ids.push_back("prismarine");
 	all_ids.push_back("prismarine");
 	all_ids.push_back("pumpkin");
@@ -266,6 +268,7 @@ Sdlinterface::Sdlinterface()
 	all_damage.push_back(0);
 	all_damage.push_back(0);
 	all_damage.push_back(1);
+	all_damage.push_back(0);
 	all_damage.push_back(2);
 	all_damage.push_back(3);
 	all_damage.push_back(1);
@@ -280,7 +283,8 @@ Sdlinterface::Sdlinterface()
 	all_damage.push_back(3);
 	all_damage.push_back(0);
 	all_damage.push_back(1);
-	all_damage.push_back(1); //TODO add prismarine
+	all_damage.push_back(0);
+	all_damage.push_back(1);
 	all_damage.push_back(2);
 	all_damage.push_back(0);
 	all_damage.push_back(0);
@@ -403,6 +407,7 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/lapis_ore.png");
 	all_blocks.push_back("textures/log_acacia.png");
 	all_blocks.push_back("textures/log_big_oak.png");
+	all_blocks.push_back("textures/log_oak.png");
 	all_blocks.push_back("textures/log_birch.png");
 	all_blocks.push_back("textures/log_jungle.png");
 	all_blocks.push_back("textures/log_spruce.png");
@@ -417,6 +422,7 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/planks_jungle.png");
 	all_blocks.push_back("textures/planks_oak.png");
 	all_blocks.push_back("textures/planks_spruce.png");
+	all_blocks.push_back("textures/wool_colored_pink.png"); //TODO change this to prismarine texture
 	all_blocks.push_back("textures/prismarine_bricks.png");
 	all_blocks.push_back("textures/prismarine_dark.png");
 	all_blocks.push_back("textures/pumpkin_face_off.png");
@@ -657,16 +663,16 @@ Sdlinterface::Sdlinterface()
 //Writes output to file
 void Sdlinterface::writeCommandToFile(std::string filename)
 {
-	int x=-978;
-	int y=59;
-	int z=-745;
+	int x=16;
+	int y=4;
+	int z=12;
 	std::ofstream myfile;
 	myfile.open(filename.c_str());
 	if (myfile.is_open()) 
 	{
 		for (Block* b:block_list)
 		{
-			myfile<<"/summon armor_stand ~"<<-1.5+(0.187*b->getX())<<"f ~"<<3.35+(-1*(0.187+0.187*b->getY()))<<"f ~"<<-0.187*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<",Count:1},{}], Pose:{RightArm:[-15f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
+			myfile<<"/summon armor_stand "<<x+-1.5+(0.187*b->getX())<<"f "<<y+3.35+(-1*(0.187+0.187*b->getY()))<<"f "<<z+-0.187*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<",Count:1},{}], Pose:{RightArm:[-15f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
 		}
 		myfile.close();
 	} 
