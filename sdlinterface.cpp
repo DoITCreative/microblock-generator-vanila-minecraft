@@ -10,12 +10,21 @@
 #include <string>
 #include <fstream>
 
+int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
+int tile_select_point_X = 0; //Point to mark position for line and rectangle tools.
+int tile_select_point_Y = 0;
+int tile_select_point_Z = 0;
+
+int tile_select_point_new_X = 0; //Point to second mark position for line and rectangle tools.
+int tile_select_point_new_Y = 0;
+int tile_select_point_new_Z = 0;
+bool tile_select_point_was_set = false; //Checks if mark was set
+
 //Main function in this class
 Sdlinterface::Sdlinterface()
 {
 	bool quit = false; //Variable to check if it is time to quit or not
 	menuopened=false; //Variable to check if block select menu is opened
-	int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
 	init(); //Initializes SDL
 
 	//Fills bottom menu vector with blocks
@@ -568,15 +577,25 @@ Sdlinterface::Sdlinterface()
 									case 10:
 										b = new Block(coord_click_x,coord_click_y,layer,damage.at(10),ids.at(10),slots.at(10));
 										break;
-									case 11:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(11),ids.at(11),slots.at(11));
-										break;
-									case 12:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(12),ids.at(12),slots.at(12));
-										break;
-									case 13:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(13),ids.at(13),slots.at(13));
-										break;
+								}
+
+								if (toolselected>0 && !(tile_select_point_X==coord_click_x && tile_select_point_Y==coord_click_y && tile_select_point_Z==layer) && !tile_select_point_was_set) //Selected tool is not point
+								{
+									tile_select_point_X=coord_click_x; //Places marker
+									tile_select_point_Y=coord_click_y;
+									tile_select_point_Z=layer;
+									tile_select_point_was_set = true;
+								}
+								else if (tile_select_point_was_set) 
+								{
+									tile_select_point_new_X = tile_select_point_X;
+									tile_select_point_new_Y = tile_select_point_Y;
+									tile_select_point_new_Z = tile_select_point_Z;
+									tile_select_point_was_set = false;
+								}
+								else
+								{
+									tile_select_point_was_set = false;
 								}
 								block_list.push_back(b);
 							}
@@ -748,6 +767,16 @@ void Sdlinterface::render()
 		{
 			image = load_image(n->getTexture());
 			apply_surface(n->getX()*25,n->getY()*25, image, screen);
+		}
+	}
+
+	//Loads select point marker TODO
+	if (tile_select_point_was_set)
+	{
+		if (tile_select_point_Z==layer) 
+		{
+			image = load_image("interface_pngs/tile_select_point.png");
+			apply_surface(tile_select_point_X*25,tile_select_point_Y*25, image, screen);
 		}
 	}
 
