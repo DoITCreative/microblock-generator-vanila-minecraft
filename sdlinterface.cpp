@@ -15,6 +15,7 @@ Sdlinterface::Sdlinterface()
 {
 	bool quit = false; //Variable to check if it is time to quit or not
 	menuopened=false; //Variable to check if block select menu is opened
+	int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
 	init(); //Initializes SDL
 
 	//Fills bottom menu vector with blocks
@@ -584,7 +585,7 @@ Sdlinterface::Sdlinterface()
 					}
 					if (event.button.x<=625 && event.button.y>425) //If bottom menu is clicked
 					{
-						std::cout<<"Click on: X:"<<event.button.x<<" Y:"<<event.button.y<<"\n";
+						//std::cout<<"Click on: X:"<<event.button.x<<" Y:"<<event.button.y<<"\n";
 						if (event.button.x<395) //Clicked on block in bottom menu
 						{
 							if(selector_pos!=(int)((event.button.x-10)/35)) //Put selector on click place
@@ -605,18 +606,21 @@ Sdlinterface::Sdlinterface()
 							}
 						}
 
-						if (event.button.x>395&&event.button.x<430) //Eraser tool
+						if (event.button.x>395&&event.button.x<430) //Point tool
 						{
-							std::cout<<"Eraser tool"<<std::endl;
+							toolselected = 0;
+							std::cout<<"Point tool"<<std::endl;
 						}
 
 						if (event.button.x>430&&event.button.x<465) //Line tool
 						{
+							toolselected = 1;
 							std::cout<<"Line tool"<<std::endl;
 						}
 
 						if (event.button.x>465&&event.button.x<500) //Rectangle tool
 						{
+							toolselected = 2;
 							std::cout<<"Rectangle tool"<<std::endl;
 						}
 
@@ -756,7 +760,7 @@ void Sdlinterface::render()
 		count++;
 	}
 
-	image = load_image("interface_pngs/eraser_tool.png");
+	image = load_image("interface_pngs/point_tool.png");
 	apply_surface(398,434,image,screen);
 
 	image = load_image("interface_pngs/line_tool.png");
