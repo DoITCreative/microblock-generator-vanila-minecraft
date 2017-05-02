@@ -605,6 +605,21 @@ Sdlinterface::Sdlinterface()
 							}
 						}
 
+						if (event.button.x>395&&event.button.x<430) //Eraser tool
+						{
+							std::cout<<"Eraser tool"<<std::endl;
+						}
+
+						if (event.button.x>430&&event.button.x<465) //Line tool
+						{
+							std::cout<<"Line tool"<<std::endl;
+						}
+
+						if (event.button.x>465&&event.button.x<500) //Rectangle tool
+						{
+							std::cout<<"Rectangle tool"<<std::endl;
+						}
+
 						if (event.button.x>500&&event.button.x<535) //Save button pressed TODO animation
 						{
 							save("savefile");
@@ -740,6 +755,15 @@ void Sdlinterface::render()
 		apply_surface(13+count*35,437,image, screen);
 		count++;
 	}
+
+	image = load_image("interface_pngs/eraser_tool.png");
+	apply_surface(398,434,image,screen);
+
+	image = load_image("interface_pngs/line_tool.png");
+	apply_surface(433,434,image,screen);
+
+	image = load_image("interface_pngs/rectangle_tool.png");
+	apply_surface(468,434,image,screen);
 
 	image = load_image("interface_pngs/save.png");
 	apply_surface(503,434,image,screen);
