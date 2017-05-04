@@ -15,9 +15,10 @@ int tile_select_point_X = 0; //Point to mark position for line and rectangle too
 int tile_select_point_Y = 0;
 int tile_select_point_Z = 0;
 
-int tile_select_point_new_X = 0; //Point to second mark position for line and rectangle tools.
-int tile_select_point_new_Y = 0;
-int tile_select_point_new_Z = 0;
+int tile_select_point_previous_X = 0; //Point to first mark position for line and rectangle tools.
+int tile_select_point_previous_Y = 0;
+int tile_select_point_previous_Z = 0;
+
 bool tile_select_point_was_set = false; //Checks if mark was set
 
 //Main function in this class
@@ -581,16 +582,24 @@ Sdlinterface::Sdlinterface()
 
 								if (toolselected>0 && !(tile_select_point_X==coord_click_x && tile_select_point_Y==coord_click_y && tile_select_point_Z==layer) && !tile_select_point_was_set) //Selected tool is not point
 								{
+
 									tile_select_point_X=coord_click_x; //Places marker
 									tile_select_point_Y=coord_click_y;
 									tile_select_point_Z=layer;
+
+									tile_select_point_previous_X=tile_select_point_X; //Store previous coords
+									tile_select_point_previous_Y=tile_select_point_Y;
+									tile_select_point_previous_Z=tile_select_point_Z;
+
 									tile_select_point_was_set = true;
+									std::cout<<"not set done"<<std::endl;
 								}
-								else if (tile_select_point_was_set) 
+								else if (tile_select_point_was_set) //TODO draw function
 								{
-									tile_select_point_new_X = tile_select_point_X;
-									tile_select_point_new_Y = tile_select_point_Y;
-									tile_select_point_new_Z = tile_select_point_Z;
+									std::cout<<"First X: "<<tile_select_point_previous_X<<" Second X: "<<coord_click_x<<std::endl;
+									std::cout<<"First Y: "<<tile_select_point_previous_Y<<" Second Y: "<<coord_click_y<<std::endl;
+									std::cout<<"First Z: "<<tile_select_point_previous_Z<<" Second Z: "<<layer<<std::endl;
+
 									tile_select_point_was_set = false;
 								}
 								else
