@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 
 int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
 int tile_select_point_X = 0; //Point to mark position for line and rectangle tools.
@@ -592,13 +593,30 @@ Sdlinterface::Sdlinterface()
 									tile_select_point_previous_Z=tile_select_point_Z;
 
 									tile_select_point_was_set = true;
-									std::cout<<"not set done"<<std::endl;
 								}
 								else if (tile_select_point_was_set) //TODO draw function
 								{
-									std::cout<<"First X: "<<tile_select_point_previous_X<<" Second X: "<<coord_click_x<<std::endl;
-									std::cout<<"First Y: "<<tile_select_point_previous_Y<<" Second Y: "<<coord_click_y<<std::endl;
-									std::cout<<"First Z: "<<tile_select_point_previous_Z<<" Second Z: "<<layer<<std::endl;
+
+									switch (toolselected)
+									{
+										case 1:
+											
+											std::cout<<"lineclick at point: 1) "<<tile_select_point_previous_X<<" "
+												<<tile_select_point_previous_Y<<" "
+												<<tile_select_point_previous_Z<<std::endl;
+											std::cout<<"lineclick at point: 2) "<<coord_click_x<<" "
+												<<coord_click_y<<" "
+												<<layer<<std::endl;
+											break;
+										case 2:
+											std::cout<<"rectclick at point: 1) "<<tile_select_point_previous_X<<" "
+												<<tile_select_point_previous_Y<<" "
+												<<tile_select_point_previous_Z<<std::endl;
+											std::cout<<"rectclick at point: 2) "<<coord_click_x<<" "
+												<<coord_click_y<<" "
+												<<layer<<std::endl;
+											break;
+									}
 
 									tile_select_point_was_set = false;
 								}
@@ -637,19 +655,16 @@ Sdlinterface::Sdlinterface()
 						if (event.button.x>395&&event.button.x<430) //Point tool
 						{
 							toolselected = 0;
-							std::cout<<"Point tool"<<std::endl;
 						}
 
 						if (event.button.x>430&&event.button.x<465) //Line tool
 						{
 							toolselected = 1;
-							std::cout<<"Line tool"<<std::endl;
 						}
 
 						if (event.button.x>465&&event.button.x<500) //Rectangle tool
 						{
 							toolselected = 2;
-							std::cout<<"Rectangle tool"<<std::endl;
 						}
 
 						if (event.button.x>500&&event.button.x<535) //Save button pressed TODO animation
@@ -702,16 +717,24 @@ Sdlinterface::Sdlinterface()
 //Writes output to file
 void Sdlinterface::writeCommandToFile(std::string filename)
 {
-	int x=16;
-	int y=4;
+	int x=11;
+	int y=5;
 	int z=12;
+	double xf;
+	double yf;
+	double zf;
 	std::ofstream myfile;
 	myfile.open(filename.c_str());
 	if (myfile.is_open()) 
 	{
 		for (Block* b:block_list)
 		{
-			myfile<<"/summon armor_stand "<<x+-1.5+(0.187*b->getX())<<"f "<<y+3.35+(-1*(0.187+0.187*b->getY()))<<"f "<<z+-0.187*b->getZ()<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<",Count:1},{}], Pose:{RightArm:[-15f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
+			//TODO add .0 to int numbers
+			xf = x+-1.5+(0.187*b->getX());
+			yf = y+3.35+(-1*(0.187+0.187*b->getY()));
+			zf = z-0.187*b->getZ();
+
+			myfile<<std::fixed<<std::setprecision(3)<<"/summon armor_stand "<<xf<<"f "<<yf<<"f "<<zf<<"f {Small:1, ShowArms:1, HandItems:[{id:"<<b->getId()<<",Damage:"<<b->getDamage()<<",Count:1},{}], Pose:{RightArm:[-15f,0f,0f]}, Rotation:[45f], NoGravity:1b, Marker:1b, Invisible:1b, NoBasePlate:1f}\n";
 		}
 		myfile.close();
 	} 
