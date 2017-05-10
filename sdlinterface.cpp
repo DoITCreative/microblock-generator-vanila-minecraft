@@ -723,7 +723,6 @@ void Sdlinterface::writeCommandToFile(std::string filename)
 	{
 		for (Block* b:block_list)
 		{
-			//TODO add .0 to int numbers
 			xf = x+-1.5+(0.187*b->getX());
 			yf = y+3.35+(-1*(0.187+0.187*b->getY()));
 			zf = z-0.187*b->getZ();
