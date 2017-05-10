@@ -165,7 +165,6 @@ Sdlinterface::Sdlinterface()
 	all_ids.push_back("red_sandstone");
 	all_ids.push_back("redstone_block");
 	all_ids.push_back("redstone_lamp");
-	all_ids.push_back("lit_redstone_lamp");
 	all_ids.push_back("redstone_ore");
 	all_ids.push_back("sand");
 	all_ids.push_back("sandstone");
@@ -183,7 +182,6 @@ Sdlinterface::Sdlinterface()
 	all_ids.push_back("stone");
 	all_ids.push_back("stone");
 	all_ids.push_back("stone");
-	all_ids.push_back("double_stone_slab");
 	all_ids.push_back("stonebrick");
 	all_ids.push_back("stonebrick");
 	all_ids.push_back("stonebrick");
@@ -305,7 +303,6 @@ Sdlinterface::Sdlinterface()
 	all_damage.push_back(0);
 	all_damage.push_back(0);
 	all_damage.push_back(0);
-	all_damage.push_back(0);
 	all_damage.push_back(1);
 	all_damage.push_back(0);
 	all_damage.push_back(2);
@@ -321,7 +318,6 @@ Sdlinterface::Sdlinterface()
 	all_damage.push_back(4);
 	all_damage.push_back(1);
 	all_damage.push_back(2);
-	all_damage.push_back(0);
 	all_damage.push_back(0);
 	all_damage.push_back(3);
 	all_damage.push_back(2);
@@ -442,7 +438,6 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/red_sandstone_smooth.png");
 	all_blocks.push_back("textures/redstone_block.png");
 	all_blocks.push_back("textures/redstone_lamp_off.png");
-	all_blocks.push_back("textures/redstone_lamp_on.png");
 	all_blocks.push_back("textures/redstone_ore.png");
 	all_blocks.push_back("textures/sand.png");
 	all_blocks.push_back("textures/sandstone_carved.png");
@@ -460,7 +455,6 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/stone_diorite_smooth.png");
 	all_blocks.push_back("textures/stone_granite.png");
 	all_blocks.push_back("textures/stone_granite_smooth.png");
-	all_blocks.push_back("textures/stone_slab_side.png");
 	all_blocks.push_back("textures/stonebrick.png");
 	all_blocks.push_back("textures/stonebrick_carved.png");
 	all_blocks.push_back("textures/stonebrick_cracked.png");
