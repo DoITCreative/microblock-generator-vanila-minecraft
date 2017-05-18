@@ -538,41 +538,12 @@ Sdlinterface::Sdlinterface()
 							if (!isset&&!menuopened)
 							{
 								Block* b;
-								switch (selector_pos) //Places block from selector to the grid
+
+								if (toolselected == 0)
 								{
-									case 0:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(0),ids.at(0),slots.at(0));
-										break;
-									case 1:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(1),ids.at(1),slots.at(1));
-										break;
-									case 2:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(2),ids.at(2),slots.at(2));
-										break;
-									case 3:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(3),ids.at(3),slots.at(3));
-										break;
-									case 4:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(4),ids.at(4),slots.at(4));
-										break;
-									case 5:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(5),ids.at(5),slots.at(5));
-										break;
-									case 6:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(6),ids.at(6),slots.at(6));
-										break;
-									case 7:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(7),ids.at(7),slots.at(7));
-										break;
-									case 8:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(8),ids.at(8),slots.at(8));
-										break;
-									case 9:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(9),ids.at(9),slots.at(9));
-										break;
-									case 10:
-										b = new Block(coord_click_x,coord_click_y,layer,damage.at(10),ids.at(10),slots.at(10));
-										break;
+									//Places block from selector to the grid
+									b = new Block(coord_click_x,coord_click_y,layer,damage.at(selector_pos),ids.at(selector_pos),slots.at(selector_pos));
+									block_list.push_back(b);
 								}
 
 								if (toolselected>0 && !(tile_select_point_X==coord_click_x && tile_select_point_Y==coord_click_y && tile_select_point_Z==layer) && !tile_select_point_was_set) //Selected tool is not point
@@ -603,6 +574,19 @@ Sdlinterface::Sdlinterface()
 												<<layer<<std::endl;
 											break;
 										case 2:
+											/*
+											// TODO abs function
+											for (int z = tile_select_point_previous_Z; z<layer; z++)
+											{
+												for (int y = tile_select_point_previous_Y; y<coord_click_y; y++) 
+												{
+													for (int x = tile_select_point_previous_X; x<coord_click_x;x++)
+													{
+														block_list.push_back(); //TODO store and recall block id, to be used with tool	
+													}
+												}
+											}
+											*/
 											std::cout<<"rectclick at point: 1) "<<tile_select_point_previous_X<<" "
 												<<tile_select_point_previous_Y<<" "
 												<<tile_select_point_previous_Z<<std::endl;
@@ -618,7 +602,6 @@ Sdlinterface::Sdlinterface()
 								{
 									tile_select_point_was_set = false;
 								}
-								block_list.push_back(b);
 							}
 							render();
 						}
