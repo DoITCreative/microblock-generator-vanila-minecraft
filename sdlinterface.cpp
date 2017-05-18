@@ -593,6 +593,19 @@ Sdlinterface::Sdlinterface()
 											std::cout<<"rectclick at point: 2) "<<coord_click_x<<" "
 												<<coord_click_y<<" "
 												<<layer<<std::endl;
+
+											for (int zn=minimum(tile_select_point_previous_Z,layer);zn<=maximum(tile_select_point_previous_Z,layer);zn++)
+											{
+												for (int yn=minimum(tile_select_point_previous_Y,coord_click_y);yn<=maximum(tile_select_point_previous_Y,coord_click_y);yn++)
+												{
+													for (int xn=minimum(tile_select_point_previous_X,coord_click_x);xn<=maximum(tile_select_point_previous_X,coord_click_x);xn++)
+													{
+														b = new Block(xn,yn,zn,damage.at(selector_pos),ids.at(selector_pos),slots.at(selector_pos));
+														block_list.push_back(b);
+
+													}
+												}
+											}
 											break;
 									}
 
@@ -689,6 +702,26 @@ Sdlinterface::Sdlinterface()
 		}
 	}
 	clean_up(); //Removes garbage
+}
+
+int Sdlinterface::minimum(int a, int b)
+{
+	int result=a;
+	if (b<a)
+	{
+		result=b;
+	}
+	return result;
+}
+
+int Sdlinterface::maximum(int a, int b)
+{
+	int result=a;
+	if (b>a)
+	{
+		result=b;
+	}
+	return result;
 }
 
 //Writes output to file

@@ -36,6 +36,8 @@ class Sdlinterface
 		SDL_Surface* load_image(std::string filename);
 		void apply_surface(int x, int y, SDL_Surface* source, SDL_Surface* destination);
 		void init();
+		int minimum(int a, int b);
+		int maximum(int a, int b);
 		void clean_up();
 		void render();
 		void save(std::string filename);
