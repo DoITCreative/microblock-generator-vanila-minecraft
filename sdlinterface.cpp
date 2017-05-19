@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include <stdlib.h>
 
 int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
 int tile_select_point_X = 0; //Point to mark position for line and rectangle tools.
@@ -572,28 +573,22 @@ Sdlinterface::Sdlinterface()
 											std::cout<<"lineclick at point: 2) "<<coord_click_x<<" "
 												<<coord_click_y<<" "
 												<<layer<<std::endl;
+											//TODO add line
+
+											if (tile_select_point_previous_X==coord_click_x)
+											{
+												for (int i=minimum(tile_select_point_previous_Y,coord_click_y);i<=maximum(tile_select_point_previous_Y,coord_click_y);i++)
+												{
+													b = new Block(tile_select_point_previous_X,i,layer,damage.at(selector_pos),ids.at(selector_pos),slots.at(selector_pos));
+													block_list.push_back(b);
+												}
+											} 
+											else
+											{
+												//TODO Beresenhams algorithm
+											}
 											break;
 										case 2:
-											/*
-											// TODO abs function
-											for (int z = tile_select_point_previous_Z; z<layer; z++)
-											{
-												for (int y = tile_select_point_previous_Y; y<coord_click_y; y++) 
-												{
-													for (int x = tile_select_point_previous_X; x<coord_click_x;x++)
-													{
-														block_list.push_back(); //TODO store and recall block id, to be used with tool	
-													}
-												}
-											}
-											*/
-											std::cout<<"rectclick at point: 1) "<<tile_select_point_previous_X<<" "
-												<<tile_select_point_previous_Y<<" "
-												<<tile_select_point_previous_Z<<std::endl;
-											std::cout<<"rectclick at point: 2) "<<coord_click_x<<" "
-												<<coord_click_y<<" "
-												<<layer<<std::endl;
-
 											for (int zn=minimum(tile_select_point_previous_Z,layer);zn<=maximum(tile_select_point_previous_Z,layer);zn++)
 											{
 												for (int yn=minimum(tile_select_point_previous_Y,coord_click_y);yn<=maximum(tile_select_point_previous_Y,coord_click_y);yn++)
@@ -621,7 +616,6 @@ Sdlinterface::Sdlinterface()
 					}
 					if (event.button.x<=625 && event.button.y>425) //If bottom menu is clicked
 					{
-						//std::cout<<"Click on: X:"<<event.button.x<<" Y:"<<event.button.y<<"\n";
 						if (event.button.x<395) //Clicked on block in bottom menu
 						{
 							if(selector_pos!=(int)((event.button.x-10)/35)) //Put selector on click place
