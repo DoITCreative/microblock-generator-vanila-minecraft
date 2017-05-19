@@ -560,21 +560,12 @@ Sdlinterface::Sdlinterface()
 
 									tile_select_point_was_set = true;
 								}
-								else if (tile_select_point_was_set) //TODO draw function
+								else if (tile_select_point_was_set)
 								{
 
 									switch (toolselected)
 									{
 										case 1:
-											
-											std::cout<<"lineclick at point: 1) "<<tile_select_point_previous_X<<" "
-												<<tile_select_point_previous_Y<<" "
-												<<tile_select_point_previous_Z<<std::endl;
-											std::cout<<"lineclick at point: 2) "<<coord_click_x<<" "
-												<<coord_click_y<<" "
-												<<layer<<std::endl;
-											//TODO add line
-
 											if (tile_select_point_previous_X==coord_click_x)
 											{
 												for (int i=minimum(tile_select_point_previous_Y,coord_click_y);i<=maximum(tile_select_point_previous_Y,coord_click_y);i++)
