@@ -801,6 +801,7 @@ int Sdlinterface::maximum(int a, int b)
 //Writes output to file
 void Sdlinterface::writeCommandToFile(std::string filename)
 {
+	//TODO add coordinate selector
 	int x=11;
 	int y=5;
 	int z=12;
