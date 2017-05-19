@@ -585,7 +585,96 @@ Sdlinterface::Sdlinterface()
 											} 
 											else
 											{
-												//TODO Beresenhams algorithm
+												    int i, dx, dy, dz, l, m, n, x_inc, y_inc, z_inc, err_1, err_2, dx2, dy2, dz2;
+    												int point[3];
+    												
+    												point[0] = tile_select_point_previous_X;
+    												point[1] = tile_select_point_previous_Y;
+    												point[2] = tile_select_point_previous_Z;
+    												dx = coord_click_x - tile_select_point_previous_X;
+    												dy = coord_click_y - tile_select_point_previous_Y;
+    												dz = layer - tile_select_point_previous_Z;
+    												x_inc = (dx < 0) ? -1 : 1;
+    												l = abs(dx);
+    												y_inc = (dy < 0) ? -1 : 1;
+    												m = abs(dy);
+    												z_inc = (dz < 0) ? -1 : 1;
+    												n = abs(dz);
+    												dx2 = l << 1;
+    												dy2 = m << 1;
+    												dz2 = n << 1;
+    												
+    												if ((l >= m) && (l >= n)) 
+													{
+    												    err_1 = dy2 - l;
+    												    err_2 = dz2 - l;
+    												    for (i = 0; i < l; i++) 
+														{
+															b = new Block(point[0],point[1],point[2],damage.at(selector_pos),ids.at(selector_pos),slots.at(selector_pos));
+															block_list.push_back(b);
+    												        if (err_1 > 0) 
+															{
+    												            point[1] += y_inc;
+    												            err_1 -= dx2;
+    												        }
+    												        if (err_2 > 0) 
+															{
+    												            point[2] += z_inc;
+    												            err_2 -= dx2;
+    												        }
+    												        err_1 += dy2;
+    												        err_2 += dz2;
+    												        point[0] += x_inc;
+    												    }
+    												} 
+													else if ((m >= l) && (m >= n)) 
+													{
+    												    err_1 = dx2 - m;
+    												    err_2 = dz2 - m;
+    												    for (i = 0; i < m; i++) 
+														{
+															b = new Block(point[0],point[1],point[2],damage.at(selector_pos),ids.at(selector_pos),slots.at(selector_pos));
+															block_list.push_back(b);
+    												        if (err_1 > 0) 
+															{
+    												            point[0] += x_inc;
+    												            err_1 -= dy2;
+    												        }
+    												        if (err_2 > 0) 
+															{
+    												            point[2] += z_inc;
+    												            err_2 -= dy2;
+    												        }
+    												        err_1 += dx2;
+    												        err_2 += dz2;
+    												        point[1] += y_inc;
+    												    }
+    												} 
+													else 
+													{
+    												    err_1 = dy2 - n;
+    												    err_2 = dx2 - n;
+    												    for (i = 0; i < n; i++) 
+														{
+															b = new Block(point[0],point[1],point[2],damage.at(selector_pos),ids.at(selector_pos),slots.at(selector_pos));
+															block_list.push_back(b);
+    												        if (err_1 > 0) 
+															{
+    												            point[1] += y_inc;
+    												            err_1 -= dz2;
+    												        }
+    												        if (err_2 > 0) 
+															{
+    												            point[0] += x_inc;
+    												            err_2 -= dz2;
+    												        }
+    												        err_1 += dy2;
+    												        err_2 += dx2;
+    												        point[2] += z_inc;
+    												    }
+    												}
+													b = new Block(point[0],point[1],point[2],damage.at(selector_pos),ids.at(selector_pos),slots.at(selector_pos));
+													block_list.push_back(b);
 											}
 											break;
 										case 2:
