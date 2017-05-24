@@ -843,6 +843,9 @@ void Sdlinterface::render()
 	//Loads bottom menu
 	image = load_image("interface_pngs/bottom_menu.png");
 	apply_surface(0,425,image, screen);
+	//Loads coord bar TODO bar
+	image = load_image("interface_pngs/coord_bar.png");
+	apply_surface(0,475,image, screen);
 	
 	//Bottom menu arrow animation
 	if (!arrow_up_pressed)

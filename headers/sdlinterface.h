@@ -12,7 +12,7 @@ class Sdlinterface
 	protected:
 		//The attributes of the screen 
 		const int SCREEN_WIDTH = 625; 
-		const int SCREEN_HEIGHT = 475; 
+		const int SCREEN_HEIGHT = 500; 
 		const int SCREEN_BPP = 32;	
 		SDL_Surface* image = NULL;
 		SDL_Surface* screen = NULL;
