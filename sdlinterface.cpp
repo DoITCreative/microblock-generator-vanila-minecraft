@@ -766,6 +766,39 @@ Sdlinterface::Sdlinterface()
 						}
 						render();
 					}
+					if (event.button.x<=625 && event.button.y>=475) //Click on coordinate pannel
+					{
+						if (event.button.x>=10&&event.button.x<=23&&event.button.y>=478&&event.button.y<=490) 
+						{
+							IN_WORLD_X++;
+							render();
+						}
+						if (event.button.x>=30&&event.button.x<=43&&event.button.y>=478&&event.button.y<=490) 
+						{
+							IN_WORLD_X--;
+							render();
+						}
+						if (event.button.x>=(int)(SCREEN_WIDTH/2-40)&&event.button.x<=(int)(SCREEN_WIDTH/2-40)+13&&event.button.y>=478&&event.button.y<=490) 
+						{
+							IN_WORLD_Y++;
+							render();
+						}
+						if (event.button.x>=(int)(SCREEN_WIDTH/2-40)+20&&event.button.x<=(int)(SCREEN_WIDTH/2-40)+33&&event.button.y>=478&&event.button.y<=490) 
+						{
+							IN_WORLD_Y--;
+							render();
+						}
+						if (event.button.x>=(int)(10+SCREEN_WIDTH-150)&&event.button.x<=(int)(10+SCREEN_WIDTH-150)+13&&event.button.y>=478&&event.button.y<=490) 
+						{
+							IN_WORLD_Z++;
+							render();
+						}
+						if (event.button.x>=(int)(30+SCREEN_WIDTH-150)&&event.button.x<=(int)(30+SCREEN_WIDTH-150)+33&&event.button.y>=478&&event.button.y<=490) 
+						{
+							IN_WORLD_Z--;
+							render();
+						}
+					}
 				}
 
 				if (event.button.button == SDL_BUTTON_RIGHT) //On right click
