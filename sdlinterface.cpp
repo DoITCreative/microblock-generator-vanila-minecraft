@@ -802,9 +802,9 @@ int Sdlinterface::maximum(int a, int b)
 void Sdlinterface::writeCommandToFile(std::string filename)
 {
 	//TODO add coordinate selector
-	int x=11;
-	int y=5;
-	int z=12;
+	int x=IN_WORLD_X;
+	int y=IN_WORLD_Y;
+	int z=IN_WORLD_Z;
 	double xf;
 	double yf;
 	double zf;
@@ -847,6 +847,69 @@ void Sdlinterface::render()
 	image = load_image("interface_pngs/coord_bar.png");
 	apply_surface(0,475,image, screen);
 	
+	//x arrow up
+	image = load_image("interface_pngs/arrow_uu.png");
+	apply_surface(10,478,image, screen);
+	//x arrow down
+	image = load_image("interface_pngs/arrow_du.png");
+	apply_surface(30,478,image, screen);
+	//x sign
+	font = TTF_OpenFont("fonts/font.ttf",20);
+	textColor = {164,164,163};
+	std::string s_Xs = "X: ";
+	char const *text_charred_Xs = s_Xs.c_str();
+	message = TTF_RenderText_Solid(font,text_charred_Xs, textColor);
+	apply_surface (55,470,message,screen);
+	//x number
+	font = TTF_OpenFont("fonts/font.ttf",20);
+	textColor = {164,164,163};
+	std::string s_Xn = std::to_string(IN_WORLD_X);
+	char const *text_charred_Xn = s_Xn.c_str();
+	message = TTF_RenderText_Solid(font,text_charred_Xn, textColor);
+	apply_surface (75,470,message,screen);
+	
+	//y arrow up
+	image = load_image("interface_pngs/arrow_uu.png");
+	apply_surface((int)(10-50+SCREEN_WIDTH/2),478,image, screen);
+	//y arrow down
+	image = load_image("interface_pngs/arrow_du.png");
+	apply_surface((int)(30-50+SCREEN_WIDTH/2),478,image, screen);
+	//y sign
+	font = TTF_OpenFont("fonts/font.ttf",20);
+	textColor = {164,164,163};
+	std::string s_Ys = "Y: ";
+	char const *text_charred_Ys = s_Ys.c_str();
+	message = TTF_RenderText_Solid(font,text_charred_Ys, textColor);
+	apply_surface ((int)(55-50+SCREEN_WIDTH/2),470,message,screen);
+	//y number
+	font = TTF_OpenFont("fonts/font.ttf",20);
+	textColor = {164,164,163};
+	std::string s_Yn = std::to_string(IN_WORLD_Y);
+	char const *text_charred_Yn = s_Yn.c_str();
+	message = TTF_RenderText_Solid(font,text_charred_Yn, textColor);
+	apply_surface ((int)(75-50+SCREEN_WIDTH/2),470,message,screen);
+
+	//z arrow up
+	image = load_image("interface_pngs/arrow_uu.png");
+	apply_surface((int)(10+SCREEN_WIDTH-150),478,image, screen);
+	//z arrow down
+	image = load_image("interface_pngs/arrow_du.png");
+	apply_surface((int)(30+SCREEN_WIDTH-150),478,image, screen);
+	//z sign
+	font = TTF_OpenFont("fonts/font.ttf",20);
+	textColor = {164,164,163};
+	std::string s_Zs = "Z: ";
+	char const *text_charred_Zs = s_Zs.c_str();
+	message = TTF_RenderText_Solid(font,text_charred_Zs, textColor);
+	apply_surface ((int)(55+SCREEN_WIDTH-150),470,message,screen);
+	//z number
+	font = TTF_OpenFont("fonts/font.ttf",20);
+	textColor = {164,164,163};
+	std::string s_Zn = std::to_string(IN_WORLD_Z);
+	char const *text_charred_Zn = s_Zn.c_str();
+	message = TTF_RenderText_Solid(font,text_charred_Zn, textColor);
+	apply_surface ((int)(75+SCREEN_WIDTH-150),470,message,screen);
+
 	//Bottom menu arrow animation
 	if (!arrow_up_pressed)
 	{
@@ -889,7 +952,7 @@ void Sdlinterface::render()
 		}
 	}
 
-	//Loads select point marker TODO
+	//Loads select point marker
 	if (tile_select_point_was_set)
 	{
 		if (tile_select_point_Z==layer) 

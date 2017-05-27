@@ -14,6 +14,9 @@ class Sdlinterface
 		const int SCREEN_WIDTH = 625; 
 		const int SCREEN_HEIGHT = 500; 
 		const int SCREEN_BPP = 32;	
+		int IN_WORLD_X = 0;
+		int IN_WORLD_Y = 0;
+		int IN_WORLD_Z = 0;
 		SDL_Surface* image = NULL;
 		SDL_Surface* screen = NULL;
 		SDL_Surface* message = NULL;
