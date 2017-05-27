@@ -694,7 +694,7 @@ Sdlinterface::Sdlinterface()
 							render();
 						}
 					}
-					if (event.button.x<=625 && event.button.y>425) //If bottom menu is clicked
+					if (event.button.x<=625 && event.button.y>425 && event.button.y<475) //If bottom menu is clicked
 					{
 						if (event.button.x<395) //Clicked on block in bottom menu
 						{
