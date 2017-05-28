@@ -834,7 +834,6 @@ int Sdlinterface::maximum(int a, int b)
 //Writes output to file
 void Sdlinterface::writeCommandToFile(std::string filename)
 {
-	//TODO add coordinate selector
 	int x=IN_WORLD_X;
 	int y=IN_WORLD_Y;
 	int z=IN_WORLD_Z;
@@ -876,7 +875,7 @@ void Sdlinterface::render()
 	//Loads bottom menu
 	image = load_image("interface_pngs/bottom_menu.png");
 	apply_surface(0,425,image, screen);
-	//Loads coord bar TODO bar
+	//Loads coord bar 
 	image = load_image("interface_pngs/coord_bar.png");
 	apply_surface(0,475,image, screen);
 	
