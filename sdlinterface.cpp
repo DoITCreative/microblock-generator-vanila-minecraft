@@ -12,6 +12,13 @@
 #include <iomanip>
 #include <stdlib.h>
 
+
+/*
+ *	Bugs: 
+ *	1) More then 1 block placing with using rect and line tools over placed blocks
+ *	2) Crash after 48 layer changes	
+ */
+
 int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
 int tile_select_point_X = 0; //Point to mark position for line and rectangle tools.
 int tile_select_point_Y = 0;
