@@ -42,6 +42,8 @@ class Sdlinterface
 		int minimum(int a, int b);
 		int maximum(int a, int b);
 		void clean_up();
+		void load_resources();
+		void unload_resources();
 		void render();
 		void save(std::string filename);
 		void load(std::string filename);
