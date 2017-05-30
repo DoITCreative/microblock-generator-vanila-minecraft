@@ -1,12 +1,10 @@
-# Simple command generator, that will create microblock structures in vanila minecraft.
+# Simple command generator, that will create structures from microblocks in vanila minecraft.
 
 ![MicroblockPNG](https://github.com/DoITCreative/microblock-generator-vanila-minecraft/raw/master/docs/preview2.png)
 
-# Program is in alpha
-
-This program will allow users to create structures layer by
+This program will allow users to create 3D objects layer by
 layer in editor and generate list of commands to build that 
-structures in game using command block.
+structures in game with command block.
 
 ![MicroblockPNG](https://github.com/DoITCreative/microblock-generator-vanila-minecraft/raw/master/docs/preview.png)
 
@@ -18,6 +16,7 @@ structures in game using command block.
 - Click on bottom menu to select block to place
 - Click on selected block in bottom menu to open block select menu
 - Change current layer by pressing arrows in the bottom menu
+- Set in world coordinate for structure on the bottom pannel
 - You can save/load your constructions in bottom menu
 - When you are done, just quit, commands will be saved in "output.txt"
 - Put commands one by one in the command block in the game

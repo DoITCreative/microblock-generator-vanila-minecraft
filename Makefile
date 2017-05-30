@@ -1,11 +1,11 @@
 CROSS=
-CC=$(CROSS)gcc
-CXX=$(CROSS)g++
+CC=$(CROSS)clang
+CXX=$(CROSS)clang++
 LD=$(CROSS)ld
 AR=$(CROSS)ar
 PKG_CONFIG=$(CROSS)pkg-config
 
-CXXFLAGS=-std=c++11
+CXXFLAGS=-std=c++11 -Wall
 LIBS=-lSDL -lSDL_image -lSDL_ttf
 INCLUDES=-Iheaders
 CPPFILES=main.cpp sdlinterface.cpp block.cpp
