@@ -30,6 +30,9 @@ int tile_select_point_previous_Z = 0;
 
 bool tile_select_point_was_set = false; //Checks if mark was set
 
+//Files
+
+
 //Main function in this class
 Sdlinterface::Sdlinterface()
 {
@@ -485,6 +488,8 @@ Sdlinterface::Sdlinterface()
 	all_blocks.push_back("textures/wool_colored_white.png");
 	all_blocks.push_back("textures/wool_colored_yellow.png");
 
+	load_resources();
+
 	render(); //Redraws screen
 	while (quit == false)
 	{
@@ -867,6 +872,19 @@ void Sdlinterface::writeCommandToFile(std::string filename)
 	}
 }
 
+//Loads all the resources
+void Sdlinterface::load_resources()
+{
+	//TODO Load everything
+	font = TTF_OpenFont("fonts/font.ttf",20);
+}
+
+void Sdlinterface::unload_resources()
+{
+	//TODO Unload everything
+	//add me to clean_up
+}
+
 //Draws graphics on screen
 void Sdlinterface::render()
 {
@@ -893,14 +911,12 @@ void Sdlinterface::render()
 	image = load_image("interface_pngs/arrow_du.png");
 	apply_surface(30,478,image, screen);
 	//x sign
-	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 	std::string s_Xs = "X: ";
 	char const *text_charred_Xs = s_Xs.c_str();
 	message = TTF_RenderText_Solid(font,text_charred_Xs, textColor);
 	apply_surface (55,470,message,screen);
 	//x number
-	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 	std::string s_Xn = std::to_string(IN_WORLD_X);
 	char const *text_charred_Xn = s_Xn.c_str();
@@ -914,14 +930,12 @@ void Sdlinterface::render()
 	image = load_image("interface_pngs/arrow_du.png");
 	apply_surface((int)(30-50+SCREEN_WIDTH/2),478,image, screen);
 	//y sign
-	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 	std::string s_Ys = "Y: ";
 	char const *text_charred_Ys = s_Ys.c_str();
 	message = TTF_RenderText_Solid(font,text_charred_Ys, textColor);
 	apply_surface ((int)(55-50+SCREEN_WIDTH/2),470,message,screen);
 	//y number
-	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 	std::string s_Yn = std::to_string(IN_WORLD_Y);
 	char const *text_charred_Yn = s_Yn.c_str();
@@ -935,14 +949,12 @@ void Sdlinterface::render()
 	image = load_image("interface_pngs/arrow_du.png");
 	apply_surface((int)(30+SCREEN_WIDTH-150),478,image, screen);
 	//z sign
-	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 	std::string s_Zs = "Z: ";
 	char const *text_charred_Zs = s_Zs.c_str();
 	message = TTF_RenderText_Solid(font,text_charred_Zs, textColor);
 	apply_surface ((int)(55+SCREEN_WIDTH-150),470,message,screen);
 	//z number
-	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 	std::string s_Zn = std::to_string(IN_WORLD_Z);
 	char const *text_charred_Zn = s_Zn.c_str();
@@ -974,7 +986,6 @@ void Sdlinterface::render()
 	}
 
 	//Loads layer counter
-	font = TTF_OpenFont("fonts/font.ttf",20);
 	textColor = {164,164,163};
 	std::string s = std::to_string(layer);
 	char const *text_charred = s.c_str();
