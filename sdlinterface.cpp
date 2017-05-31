@@ -16,7 +16,6 @@
 /*
  *	Bugs: 
  *	1) More then 1 block placing with using rect and line tools over placed blocks
- *	2) Crash after 48 layer changes	
  */
 
 int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
@@ -54,7 +53,7 @@ Sdlinterface::Sdlinterface()
 	slots.push_back("textures/log_birch.png");
 
 	//Fills id vector for blocks
-	ids.push_back("brick");
+	ids.push_back("brick_block");
 	ids.push_back("cobblestone");
 	ids.push_back("diamond_block");
 	ids.push_back("dirt");
