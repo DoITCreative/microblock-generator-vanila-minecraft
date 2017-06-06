@@ -52,7 +52,7 @@ Sdlinterface::Sdlinterface()
 	slots.push_back("textures/log_birch.png");
 
 	//Fills id vector for blocks
-	ids.push_back("brick");
+	ids.push_back("brick_block");
 	ids.push_back("cobblestone");
 	ids.push_back("diamond_block");
 	ids.push_back("dirt");
