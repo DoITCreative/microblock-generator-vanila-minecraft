@@ -16,7 +16,6 @@
 /*
  *	Bugs: 
  *	1) More then 1 block placing with using rect and line tools over placed blocks
- *	2) Crash after 48 layer changes	
  */
 
 int toolselected = 0; //0 - point, 1 - line, 2 - rectangle
@@ -31,7 +30,6 @@ int tile_select_point_previous_Z = 0;
 bool tile_select_point_was_set = false; //Checks if mark was set
 
 //Files
-
 
 //Main function in this class
 Sdlinterface::Sdlinterface()
@@ -198,22 +196,22 @@ Sdlinterface::Sdlinterface()
 	all_ids.push_back("stonebrick");
 	all_ids.push_back("stonebrick");
 	all_ids.push_back("tnt");
-	all_ids.push_back("wool_colored_black");
-	all_ids.push_back("wool_colored_blue");
-	all_ids.push_back("wool_colored_brown");
-	all_ids.push_back("wool_colored_cyan");
-	all_ids.push_back("wool_colored_gray");
-	all_ids.push_back("wool_colored_green");
-	all_ids.push_back("wool_colored_light_blue");
-	all_ids.push_back("wool_colored_lime");
-	all_ids.push_back("wool_colored_magenta");
-	all_ids.push_back("wool_colored_orange");
-	all_ids.push_back("wool_colored_pink");
-	all_ids.push_back("wool_colored_purple");
-	all_ids.push_back("wool_colored_red");
-	all_ids.push_back("wool_colored_silver");
-	all_ids.push_back("wool_colored_white");
-	all_ids.push_back("wool_colored_yellow");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
+	all_ids.push_back("wool");
 
 	all_damage.push_back(0);
 	all_damage.push_back(0);
